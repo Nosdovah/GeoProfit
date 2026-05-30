@@ -1,24 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
-  --bg-dark: #0f121b;
-  --bg-card: rgba(26, 32, 53, 0.65);
-  --bg-card-hover: rgba(26, 32, 53, 0.85);
-  --primary: #6366f1; /* Indigo */
-  --primary-glow: rgba(99, 102, 241, 0.25);
-  --secondary: #10b981; /* Emerald */
-  --secondary-glow: rgba(16, 185, 129, 0.25);
-  --accent: #f43f5e; /* Rose */
-  --text-main: #f8fafc;
+  --bg-dark: #071126; /* Deep navy */
+  --bg-dark-accent: #0f1c3f;
+  --bg-card: rgba(13, 27, 56, 0.75); /* Navy glass */
+  --bg-card-hover: rgba(18, 38, 78, 0.85);
+  --primary: #1e88e5; /* Vibrant sky/royal blue */
+  --primary-glow: rgba(30, 136, 229, 0.25);
+  --secondary: #1e88e5;
+  --secondary-glow: rgba(30, 136, 229, 0.15);
+  --accent: #f43f5e;
+  --text-main: #ffffff;
   --text-muted: #94a3b8;
-  --border: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.1);
+  --font-serif: 'Lora', serif;
+  --font-sans: 'Outfit', sans-serif;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-sans);
 }
 
 body {
@@ -27,8 +30,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
+    linear-gradient(to bottom, #071126 0%, #0d1e3d 40%, #ffffff 40.01%, #f8fafc 100%);
 }
 
 /* Glassmorphism Utilities */
@@ -86,3 +88,33 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #475569;
 }
+
+/* Button Animations */
+.btn-analyze:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(16, 185, 129, 0.4) !important;
+  background: #0ea5e9 !important; /* Switch to sky blue on hover for dynamic feel */
+}
+
+.btn-analyze:active {
+  transform: translateY(0);
+}
+
+.form-group:hover .lucide {
+  color: var(--primary) !important;
+}
+
+.form-group select option {
+  background: var(--bg-dark);
+  color: var(--text-main);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+

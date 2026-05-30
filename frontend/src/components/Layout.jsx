@@ -1,73 +1,126 @@
 import React from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
-import { LayoutDashboard, MapPin, Calculator, RefreshCcw, ListChecks, Menu, Bell } from 'lucide-react';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Sparkles } from 'lucide-react';
 
 const Layout = () => {
+  const location = useLocation();
+
   return (
-    <div className="layout-container" style={{ display: 'flex', minHeight: '100vh' }}>
-      {/* Sidebar */}
-      <aside className="glass-panel" style={{ width: '280px', margin: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
-          <img src="/Logo.png" alt="GeoProfit Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-          <h2 className="text-gradient" style={{ fontSize: '1.25rem', fontWeight: '700' }}>GeoProfit</h2>
-        </div>
-        
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '1px', marginBottom: '8px', marginTop: '8px' }}>User Flow Pipeline</div>
-          
-          <NavItem to="/voc" icon={<ListChecks size={20} />} label="1. Kano & VOC" />
-          <NavItem to="/location" icon={<MapPin size={20} />} label="2. GIS & OpEx" />
-          <NavItem to="/hoq" icon={<Calculator size={20} />} label="3. HoQ Matrix" />
-          <NavItem to="/optimizer" icon={<RefreshCcw size={20} />} label="4. The Roof Optimizer" />
-          
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '1px', marginBottom: '8px', marginTop: '24px' }}>Analytics & Result</div>
-          
-          <NavItem to="/dashboard" icon={<LayoutDashboard size={20} />} label="5. BI Dashboard" />
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      {/* Skystructure Style Top Navbar */}
+      <header style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        background: 'rgba(7, 17, 38, 0.85)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        padding: '0 40px',
+        height: '80px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
+        {/* Logo */}
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, #1e88e5 0%, #1565c0 100%)',
+            width: '36px',
+            height: '36px',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: '1.2rem',
+            boxShadow: '0 4px 12px rgba(30, 136, 229, 0.3)'
+          }}>
+            G
+          </div>
+          <span style={{ 
+            fontFamily: "var(--font-sans)", 
+            color: 'white', 
+            fontSize: '1.3rem', 
+            fontWeight: '700', 
+            letterSpacing: '0.5px' 
+          }}>
+            GEOPROFIT<span style={{ color: '#1e88e5' }}>.UMKM</span>
+          </span>
+        </Link>
+
+        {/* Navigation Menu */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+          <NavItem to="/voc" label="Kano & VOC" active={location.pathname === '/voc'} />
+          <NavItem to="/location" label="GIS & OpEx" active={location.pathname === '/location'} />
+          <NavItem to="/hoq" label="HoQ Matrix" active={location.pathname === '/hoq'} />
+          <NavItem to="/optimizer" label="Optimizer" active={location.pathname === '/optimizer'} />
+          <NavItem to="/dashboard" label="Dashboard" active={location.pathname === '/dashboard'} />
         </nav>
-      </aside>
+
+        {/* CTA Button */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <Link to="/voc" style={{
+            background: '#1e88e5',
+            color: 'white',
+            padding: '10px 22px',
+            borderRadius: '6px',
+            fontSize: '0.9rem',
+            fontWeight: '600',
+            textDecoration: 'none',
+            boxShadow: '0 4px 14px rgba(30, 136, 229, 0.4)',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = 'translateY(-1px)';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(30, 136, 229, 0.6)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = 'none';
+            e.currentTarget.style.boxShadow = '0 4px 14px rgba(30, 136, 229, 0.4)';
+          }}
+          >
+            Mulai Analisis
+          </Link>
+        </div>
+      </header>
 
       {/* Main Content */}
-      <main style={{ flex: 1, padding: '16px 16px 16px 0', display: 'flex', flexDirection: 'column' }}>
-        {/* Header */}
-        <header className="glass-panel" style={{ height: '70px', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <Menu style={{ cursor: 'pointer', color: 'var(--text-muted)' }} />
-            <span style={{ fontWeight: '500', color: 'var(--text-muted)' }}>Location Intelligence DSS</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-            <Bell style={{ cursor: 'pointer', color: 'var(--text-muted)' }} />
-            <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)', border: '2px solid var(--primary)' }}></div>
-          </div>
-        </header>
-
-        {/* Dynamic Page Content */}
-        <div style={{ flex: 1, overflowY: 'auto', paddingRight: '4px' }}>
-          <Outlet />
-        </div>
+      <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <Outlet />
       </main>
     </div>
   );
 };
 
-const NavItem = ({ to, icon, label }) => (
-  <NavLink 
+const NavItem = ({ to, label, active }) => (
+  <Link 
     to={to} 
-    style={({ isActive }) => ({
-      display: 'flex', 
-      alignItems: 'center', 
-      gap: '12px', 
-      padding: '12px 16px', 
-      borderRadius: '8px',
+    style={{
+      fontSize: '0.95rem',
+      fontWeight: '500',
       textDecoration: 'none',
-      color: isActive ? 'white' : 'var(--text-muted)',
-      background: isActive ? 'var(--primary-glow)' : 'transparent',
-      borderLeft: isActive ? '3px solid var(--primary)' : '3px solid transparent',
-      transition: 'all 0.2s ease'
-    })}
+      color: active ? 'white' : '#94a3b8',
+      position: 'relative',
+      padding: '8px 0',
+      transition: 'color 0.2s ease'
+    }}
+    onMouseOver={(e) => { if (!active) e.currentTarget.style.color = 'white'; }}
+    onMouseOut={(e) => { if (!active) e.currentTarget.style.color = '#94a3b8'; }}
   >
-    {icon}
-    <span style={{ fontWeight: '500' }}>{label}</span>
-  </NavLink>
+    {label}
+    {active && (
+      <span style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: '2px',
+        background: '#1e88e5',
+        borderRadius: '2px'
+      }} />
+    )}
+  </Link>
 );
 
 export default Layout;
