@@ -54,8 +54,8 @@ const Layout = () => {
           <NavItem to="/voc" label="Kano & VOC" active={location.pathname === '/voc'} />
           <NavItem to="/location" label="GIS & OpEx" active={location.pathname === '/location'} />
           <NavItem to="/hoq" label="HoQ Matrix" active={location.pathname === '/hoq'} />
-          <NavItem to="/optimizer" label="Optimizer" active={location.pathname === '/optimizer'} />
-          <NavItem to="/dashboard" label="Dashboard" active={location.pathname === '/dashboard'} />
+          <NavItem to="/optimizer" label="Optimasi" active={location.pathname === '/optimizer'} />
+          <NavItem to="/dashboard" label="Dasbor Analitik" active={location.pathname === '/dashboard'} />
         </nav>
 
         {/* CTA Button */}

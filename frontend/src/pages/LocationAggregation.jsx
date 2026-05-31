@@ -114,7 +114,7 @@ const LocationAggregation = () => {
             fontWeight: '600',
             marginBottom: '16px'
           }}>
-            Fase 2: Aggregation Layer
+            Fase 2: Lapisan Agregasi
           </p>
           <h1 style={{
             fontFamily: 'var(--font-serif)',
@@ -235,7 +235,7 @@ const LocationAggregation = () => {
               >
                 {pipelineState === 'scanning' ? (
                   <>
-                    <Loader2 size={18} className="animate-spin" /> Executing Pipeline...
+                    <Loader2 size={18} className="animate-spin" /> Mengeksekusi Pipeline...
                   </>
                 ) : (
                   <>
@@ -259,7 +259,7 @@ const LocationAggregation = () => {
             {/* Header Terminal */}
             <div style={{ background: '#09152e', padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Activity size={16} color="#94a3b8" />
-              <span style={{ fontSize: '0.85rem', color: '#94a3b8', fontWeight: '500', letterSpacing: '1px' }}>SYSTEM PIPELINE TERMINAL</span>
+              <span style={{ fontSize: '0.85rem', color: '#94a3b8', fontWeight: '500', letterSpacing: '1px' }}>TERMINAL PIPELINE SISTEM</span>
             </div>
             
             {/* Body */}
@@ -279,7 +279,7 @@ const LocationAggregation = () => {
                     </div>
                   ))}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '10px', color: '#1e88e5' }}>
-                    <Loader2 size={14} className="animate-spin" /> Processing request...
+                    <Loader2 size={14} className="animate-spin" /> Memproses permintaan...
                   </div>
                 </div>
               )}
@@ -297,7 +297,7 @@ const LocationAggregation = () => {
                   {/* UI Overlay */}
                   <div style={{ position: 'absolute', top: '16px', left: '16px', background: 'rgba(7, 17, 38, 0.85)', padding: '8px 12px', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '8px', backdropFilter: 'blur(4px)' }}>
                      <MapPin size={14} color="#10b981" />
-                     <span style={{ fontSize: '0.8rem', color: 'white', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Live OpEx Heatmap</span>
+                     <span style={{ fontSize: '0.8rem', color: 'white', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Heatmap OpEx Langsung</span>
                   </div>
                   {/* Center Radar Ping */}
                   <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80px', height: '80px', borderRadius: '50%', border: '2px solid rgba(16, 185, 129, 0.6)', background: 'rgba(16, 185, 129, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

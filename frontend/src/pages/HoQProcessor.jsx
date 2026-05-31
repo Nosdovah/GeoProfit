@@ -102,7 +102,7 @@ const HoQProcessor = () => {
             fontWeight: '600',
             marginBottom: '16px'
           }}>
-            Fase 3: Core Algorithm
+            Fase 3: Algoritma Inti
           </p>
           <h1 style={{
             fontFamily: 'var(--font-serif)',
@@ -112,7 +112,7 @@ const HoQProcessor = () => {
             marginBottom: '24px',
             color: 'white'
           }}>
-            House of Quality (HoQ) Processor
+            Pemroses House of Quality (HoQ)
           </h1>
           <p style={{
             fontSize: '1.15rem',
@@ -151,7 +151,7 @@ const HoQProcessor = () => {
                   <TableProperties size={24} />
                 </div>
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', fontWeight: '500', color: 'white' }}>
-                  Relationship Matrix (WHATs vs HOWs)
+                  Matriks Hubungan (WHATs vs HOWs)
                 </h3>
               </div>
               <p style={{ color: '#94a3b8', fontSize: '0.95rem' }}>Skala Korelasi: Kuat (9), Menengah (3), Lemah (1), Tidak Ada (0).</p>
@@ -228,7 +228,7 @@ const HoQProcessor = () => {
           animation: 'fadeIn 0.6s ease-out forwards'
         }}>
           <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'white', marginBottom: '32px', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <Cpu color="#8b5cf6" /> Output HoQ: Raw Weights
+            <Cpu color="#8b5cf6" /> Output HoQ: Bobot Mentah
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
@@ -252,7 +252,7 @@ const HoQProcessor = () => {
 
             {/* Chart Container 2: Bar Chart */}
             <div className="glass-panel" style={{ padding: '32px', background: 'rgba(13, 27, 56, 0.6)' }}>
-              <h4 style={{ fontSize: '1.1rem', color: '#f8fafc', marginBottom: '24px', textAlign: 'center' }}>Ranking Absolute Weights</h4>
+              <h4 style={{ fontSize: '1.1rem', color: '#f8fafc', marginBottom: '24px', textAlign: 'center' }}>Peringkat Bobot Absolut</h4>
               <div style={{ height: '350px', width: '100%' }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={resultsData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -281,7 +281,7 @@ const HoQProcessor = () => {
           }}>
             <div>
               <h3 style={{ fontSize: '1.2rem', color: 'white', marginBottom: '8px' }}>Bobot Prioritas Ditemukan!</h3>
-              <p style={{ color: '#94a3b8' }}>Berdasarkan perhitungan HoQ, parameter "Kepadatan Populasi" dan "Biaya Sewa" memiliki beban paling krusial. Lanjutkan ke Optimizer untuk resolusi konflik (The Roof).</p>
+              <p style={{ color: '#94a3b8' }}>Berdasarkan perhitungan HoQ, parameter "Kepadatan Populasi" dan "Biaya Sewa" memiliki beban paling krusial. Lanjutkan ke fase Optimasi untuk resolusi konflik (The Roof).</p>
             </div>
             <button 
               onClick={() => navigate('/optimizer')}
@@ -307,7 +307,7 @@ const HoQProcessor = () => {
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              Ke Trade-off Optimizer <ArrowRight size={16} />
+              Ke Optimasi Trade-off <ArrowRight size={16} />
             </button>
           </div>
         </section>

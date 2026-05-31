@@ -3,19 +3,19 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { Target, TrendingUp, AlertTriangle, Zap } from 'lucide-react';
 
 const shortTermData = [
-  { name: 'Kano Score', value: 85 },
-  { name: 'Foot Traffic', value: 90 },
-  { name: 'OpEx Efficiency', value: 40 },
-  { name: 'Network Stability', value: 75 },
-  { name: 'Rent Affordability', value: 95 },
+  { name: 'Skor Kano', value: 85 },
+  { name: 'Trafik Pengunjung', value: 90 },
+  { name: 'Efisiensi OpEx', value: 40 },
+  { name: 'Stabilitas Jaringan', value: 75 },
+  { name: 'Keterjangkauan Sewa', value: 95 },
 ];
 
 const longTermData = [
-  { name: 'Kano Score', value: 95 },
-  { name: 'Foot Traffic', value: 70 },
-  { name: 'OpEx Efficiency', value: 85 },
-  { name: 'Network Stability', value: 95 },
-  { name: 'Rent Affordability', value: 60 },
+  { name: 'Skor Kano', value: 95 },
+  { name: 'Trafik Pengunjung', value: 70 },
+  { name: 'Efisiensi OpEx', value: 85 },
+  { name: 'Stabilitas Jaringan', value: 95 },
+  { name: 'Keterjangkauan Sewa', value: 60 },
 ];
 
 const roiProjection = [
@@ -23,7 +23,7 @@ const roiProjection = [
   { month: 'Feb', shortTerm: 5000, longTerm: 2500 },
   { month: 'Mar', shortTerm: 6500, longTerm: 3200 },
   { month: 'Apr', shortTerm: 8000, longTerm: 4500 },
-  { month: 'May', shortTerm: 9500, longTerm: 6000 },
+  { month: 'Mei', shortTerm: 9500, longTerm: 6000 },
   { month: 'Jun', shortTerm: 11000, longTerm: 9000 },
   { month: 'Jul', shortTerm: 11500, longTerm: 14000 },
 ];
@@ -31,7 +31,7 @@ const roiProjection = [
 const Dashboard = () => {
   const [strategy, setStrategy] = useState('short-term');
   const radarData = strategy === 'short-term' ? shortTermData : longTermData;
-  const recommendedLocation = strategy === 'short-term' ? 'Site A (Downtown Kiosk)' : 'Site B (Suburban Hub)';
+  const recommendedLocation = strategy === 'short-term' ? 'Lokasi A (Kios Pusat Kota)' : 'Lokasi B (Pusat Suburban)';
 
   return (
     <div className="animate-fade-in" style={{ background: '#071126', color: '#ffffff', minHeight: '100vh', width: '100%', padding: '60px 40px 100px 40px' }}>
@@ -39,8 +39,8 @@ const Dashboard = () => {
         {/* Header Actions */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <div>
-            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', fontWeight: '500', marginBottom: '8px', color: 'white' }}>BI ROI Analytics Dashboard</h1>
-            <p style={{ color: '#94a3b8', fontSize: '1.05rem' }}>Multi-Objective Parameter Optimization & Trade-off Resolution</p>
+            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', fontWeight: '500', marginBottom: '8px', color: 'white' }}>Dasbor Analitik BI ROI</h1>
+            <p style={{ color: '#94a3b8', fontSize: '1.05rem' }}>Optimasi Parameter Multi-Objektif & Resolusi Konflik</p>
           </div>
           
           <div className="glass-panel" style={{ display: 'flex', padding: '6px', borderRadius: '12px', background: 'rgba(13, 27, 56, 0.85)' }}>
@@ -59,7 +59,7 @@ const Dashboard = () => {
                 boxShadow: strategy === 'short-term' ? '0 4px 12px rgba(30, 136, 229, 0.4)' : 'none'
               }}
             >
-              Short-term ROI Maximizer
+              Maksimalkan ROI Jangka Pendek
             </button>
             <button 
               onClick={() => setStrategy('long-term')}
@@ -76,29 +76,29 @@ const Dashboard = () => {
                 boxShadow: strategy === 'long-term' ? '0 4px 12px rgba(16, 185, 129, 0.4)' : 'none'
               }}
             >
-              Long-term Market Penetration
+              Penetrasi Pasar Jangka Panjang
             </button>
           </div>
         </div>
 
         {/* Metric Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
-          <MetricCard title="Top Recommended Site" value={recommendedLocation} icon={<Target color="#1e88e5" size={24} />} />
-          <MetricCard title="HoQ Raw Weight" value={strategy === 'short-term' ? '8,432' : '9,120'} icon={<Zap color="#10b981" size={24} />} />
-          <MetricCard title="Projected OpEx (Yr 1)" value={strategy === 'short-term' ? 'Rp 45M' : 'Rp 120M'} icon={<TrendingUp color="#f59e0b" size={24} />} />
-          <MetricCard title="Trade-off Risk Level" value={strategy === 'short-term' ? 'Moderate' : 'High'} icon={<AlertTriangle color="#f43f5e" size={24} />} />
+          <MetricCard title="Situs Rekomendasi Utama" value={recommendedLocation} icon={<Target color="#1e88e5" size={24} />} />
+          <MetricCard title="Bobot Mentah HoQ" value={strategy === 'short-term' ? '8,432' : '9,120'} icon={<Zap color="#10b981" size={24} />} />
+          <MetricCard title="Proyeksi OpEx (Thn 1)" value={strategy === 'short-term' ? 'Rp 45M' : 'Rp 120M'} icon={<TrendingUp color="#f59e0b" size={24} />} />
+          <MetricCard title="Tingkat Risiko Konflik" value={strategy === 'short-term' ? 'Sedang' : 'Tinggi'} icon={<AlertTriangle color="#f43f5e" size={24} />} />
         </div>
 
         {/* Charts Row */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
           <div className="glass-panel" style={{ padding: '32px', background: 'rgba(13, 27, 56, 0.85)' }}>
-            <h3 style={{ marginBottom: '24px', fontWeight: '600', color: 'white', fontSize: '1.2rem' }}>Technical Priority Matrix (Radar)</h3>
+            <h3 style={{ marginBottom: '24px', fontWeight: '600', color: 'white', fontSize: '1.2rem' }}>Matriks Prioritas Teknis (Radar)</h3>
             <div style={{ height: '350px', width: '100%' }}>
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart cx="50%" cy="50%" outerRadius="65%" data={radarData}>
                   <PolarGrid stroke="rgba(255,255,255,0.1)" />
                   <PolarAngleAxis dataKey="name" tick={{ fill: '#94a3b8', fontSize: 12 }} />
-                  <Radar name="Priority Score" dataKey="value" stroke={strategy === 'short-term' ? '#1e88e5' : '#10b981'} fill={strategy === 'short-term' ? '#1e88e5' : '#10b981'} fillOpacity={0.4} />
+                  <Radar name="Skor Prioritas" dataKey="value" stroke={strategy === 'short-term' ? '#1e88e5' : '#10b981'} fill={strategy === 'short-term' ? '#1e88e5' : '#10b981'} fillOpacity={0.4} />
                   <Tooltip contentStyle={{ backgroundColor: '#0f1c3f', borderColor: '#1e88e5', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 'bold' }} />
                 </RadarChart>
               </ResponsiveContainer>
@@ -106,7 +106,7 @@ const Dashboard = () => {
           </div>
 
           <div className="glass-panel" style={{ padding: '32px', background: 'rgba(13, 27, 56, 0.85)' }}>
-            <h3 style={{ marginBottom: '24px', fontWeight: '600', color: 'white', fontSize: '1.2rem' }}>Projected Revenue Growth (DCF Model)</h3>
+            <h3 style={{ marginBottom: '24px', fontWeight: '600', color: 'white', fontSize: '1.2rem' }}>Proyeksi Pertumbuhan Pendapatan (Model DCF)</h3>
             <div style={{ height: '350px', width: '100%' }}>
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={roiProjection} margin={{ top: 20, right: 30, left: 10, bottom: 10 }}>
@@ -125,8 +125,8 @@ const Dashboard = () => {
                   <YAxis stroke="#94a3b8" tick={{ fill: '#94a3b8' }} axisLine={false} tickLine={false} />
                   <Tooltip contentStyle={{ backgroundColor: '#0f1c3f', borderColor: '#10b981', borderRadius: '8px' }} itemStyle={{ color: '#fff', fontWeight: 'bold' }} />
                   <Legend iconType="circle" wrapperStyle={{ paddingTop: '20px' }} />
-                  <Area type="monotone" dataKey="shortTerm" stroke="#1e88e5" strokeWidth={3} fillOpacity={1} fill="url(#colorShort)" name="Short-term Strategy" />
-                  <Area type="monotone" dataKey="longTerm" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorLong)" name="Long-term Strategy" />
+                  <Area type="monotone" dataKey="shortTerm" stroke="#1e88e5" strokeWidth={3} fillOpacity={1} fill="url(#colorShort)" name="Strategi Jangka Pendek" />
+                  <Area type="monotone" dataKey="longTerm" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorLong)" name="Strategi Jangka Panjang" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>

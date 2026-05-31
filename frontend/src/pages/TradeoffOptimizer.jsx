@@ -59,7 +59,7 @@ const CustomTooltip = ({ active, payload }) => {
         <p style={{ fontSize: '0.9rem', color: '#94a3b8' }}>Kepadatan (Benefit): <span style={{ color: 'white' }}>{data.populasi}</span></p>
         <p style={{ fontSize: '0.9rem', color: '#94a3b8' }}>Biaya Sewa (Cost): <span style={{ color: 'white' }}>{data.sewa}</span></p>
         <div style={{ marginTop: '8px', fontSize: '0.8rem', padding: '4px 8px', background: data.type === 'optimal' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)', color: data.type === 'optimal' ? '#10b981' : '#ef4444', borderRadius: '4px', display: 'inline-block' }}>
-          {data.type === 'optimal' ? 'Pareto Optimal (Sweet Spot)' : 'Dominated (Sub-optimal)'}
+          {data.type === 'optimal' ? 'Pareto Optimal (Sweet Spot)' : 'Didominasi (Sub-optimal)'}
         </div>
       </div>
     );
@@ -108,7 +108,7 @@ const TradeoffOptimizer = () => {
             fontWeight: '600',
             marginBottom: '16px'
           }}>
-            Fase 4: Conflict Resolution
+            Fase 4: Resolusi Konflik
           </p>
           <h1 style={{
             fontFamily: 'var(--font-serif)',
@@ -157,7 +157,7 @@ const TradeoffOptimizer = () => {
                   <AlertTriangle size={24} />
                 </div>
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', fontWeight: '500', color: 'white' }}>
-                  Correlation Matrix (The Roof)
+                  Matriks Korelasi (The Roof)
                 </h3>
               </div>
               <p style={{ color: '#94a3b8', fontSize: '0.95rem', maxWidth: '600px', lineHeight: '1.5' }}>
@@ -188,7 +188,7 @@ const TradeoffOptimizer = () => {
               {isOptimizing ? (
                 <><RefreshCcw size={18} className="animate-spin" /> Menghitung Pareto...</>
               ) : (
-                <><Settings2 size={18} /> Resolve Trade-offs</>
+                <><Settings2 size={18} /> Selesaikan Trade-off</>
               )}
             </button>
           </div>
@@ -228,10 +228,10 @@ const TradeoffOptimizer = () => {
           </div>
 
           <div style={{ marginTop: '24px', display: 'flex', gap: '24px', fontSize: '0.85rem', color: '#94a3b8', justifyContent: 'center' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#10b981', fontWeight: 'bold' }}>++</span> Strong Positive</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#34d399' }}>+</span> Positive</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#f87171' }}>-</span> Negative</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#ef4444', fontWeight: 'bold' }}>--</span> Strong Negative (Trade-off)</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#10b981', fontWeight: 'bold' }}>++</span> Positif Kuat</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#34d399' }}>+</span> Positif</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#f87171' }}>-</span> Negatif</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#ef4444', fontWeight: 'bold' }}>--</span> Negatif Kuat (Trade-off)</span>
           </div>
 
         </div>
@@ -246,7 +246,7 @@ const TradeoffOptimizer = () => {
           animation: 'fadeIn 0.6s ease-out forwards'
         }}>
           <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'white', marginBottom: '32px', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <Target color="#ef4444" /> Pareto Efficiency Frontier
+            <Target color="#ef4444" /> Batas Efisiensi Pareto
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: '24px' }}>
@@ -257,7 +257,7 @@ const TradeoffOptimizer = () => {
                 <h4 style={{ fontSize: '1.1rem', color: '#f8fafc' }}>Kepadatan Populasi vs Biaya Sewa</h4>
                 <div style={{ display: 'flex', gap: '16px', fontSize: '0.85rem' }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#10b981' }}><div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#10b981' }}></div> Optimal</span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#ef4444' }}><div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }}></div> Dominated</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#ef4444' }}><div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }}></div> Didominasi</span>
                 </div>
               </div>
               
@@ -326,7 +326,7 @@ const TradeoffOptimizer = () => {
           }}>
             <div>
               <h3 style={{ fontSize: '1.2rem', color: 'white', marginBottom: '8px' }}>Trade-off Telah Diselesaikan</h3>
-              <p style={{ color: '#94a3b8' }}>Kandidat lokasi terbaik telah disaring. Lanjutkan ke fase akhir untuk melihat proyeksi ROI dan Business Intelligence Dashboard.</p>
+              <p style={{ color: '#94a3b8' }}>Kandidat lokasi terbaik telah disaring. Lanjutkan ke fase akhir untuk melihat proyeksi ROI dan Dasbor Business Intelligence.</p>
             </div>
             <button 
               onClick={() => navigate('/dashboard')}
@@ -352,7 +352,7 @@ const TradeoffOptimizer = () => {
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              Lihat BI Dashboard <ArrowRight size={16} />
+              Lihat Dasbor BI <ArrowRight size={16} />
             </button>
           </div>
         </section>

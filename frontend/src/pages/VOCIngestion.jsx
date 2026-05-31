@@ -59,7 +59,7 @@ const VOCIngestion = () => {
             { label: 'Skor Lokasi', value: Math.floor(Math.random() * 20) + 80, icon: <MapPin size={20} /> },
             { label: 'Prediksi Profit', value: Math.floor(Math.random() * 30) + 70, icon: <TrendingUp size={20} /> },
             { label: 'Tingkat Kompetitor', value: Math.floor(Math.random() * 40) + 40, icon: <Users size={20} /> },
-            { label: 'ROI Estimation', value: Math.floor(Math.random() * 20) + 80, icon: <Activity size={20} /> },
+            { label: 'Estimasi ROI', value: Math.floor(Math.random() * 20) + 80, icon: <Activity size={20} /> },
             { label: 'Kelayakan Modal', value: Math.floor(Math.random() * 15) + 85, icon: <Wallet size={20} /> },
             { label: 'Skor Supplier', value: Math.floor(Math.random() * 20) + 75, icon: <Truck size={20} /> },
             { label: 'Aksesibilitas', value: Math.floor(Math.random() * 20) + 75, icon: <Car size={20} /> }
@@ -121,7 +121,7 @@ const VOCIngestion = () => {
             fontWeight: '600',
             marginBottom: '16px'
           }}>
-            GeoProfit Location Intelligence
+            Kecerdasan Lokasi UMKM GeoProfit
           </p>
           <h1 style={{
             fontFamily: 'var(--font-serif)',
@@ -131,7 +131,7 @@ const VOCIngestion = () => {
             marginBottom: '24px',
             color: 'white'
           }}>
-            Elevating UMKM Location Decisions
+            Meningkatkan Keputusan Lokasi UMKM
           </h1>
           <p style={{
             fontSize: '1.15rem',
@@ -140,7 +140,7 @@ const VOCIngestion = () => {
             margin: '0 auto 40px auto',
             lineHeight: '1.6'
           }}>
-            Engineering Excellence • AI-Driven GIS Analytics • Financial Feasibility Estimation
+            Keunggulan Rekayasa Sistem • Analitik GIS Berbasis AI • Estimasi Kelayakan Finansial
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
             <button 
