@@ -34,96 +34,102 @@ const Dashboard = () => {
   const recommendedLocation = strategy === 'short-term' ? 'Site A (Downtown Kiosk)' : 'Site B (Suburban Hub)';
 
   return (
-    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      {/* Header Actions */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-        <div>
-          <h1 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '8px' }}>BI ROI Analytics Dashboard</h1>
-          <p style={{ color: 'var(--text-muted)' }}>Multi-Objective Parameter Optimization & Trade-off Resolution</p>
-        </div>
-        
-        <div className="glass-panel" style={{ display: 'flex', padding: '4px', borderRadius: '12px' }}>
-          <button 
-            onClick={() => setStrategy('short-term')}
-            style={{
-              padding: '8px 16px',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: '600',
-              background: strategy === 'short-term' ? 'var(--primary)' : 'transparent',
-              color: strategy === 'short-term' ? 'white' : 'var(--text-muted)',
-              transition: 'all 0.3s ease'
-            }}
-          >
-            Short-term ROI Maximizer
-          </button>
-          <button 
-            onClick={() => setStrategy('long-term')}
-            style={{
-              padding: '8px 16px',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: '600',
-              background: strategy === 'long-term' ? 'var(--secondary)' : 'transparent',
-              color: strategy === 'long-term' ? 'white' : 'var(--text-muted)',
-              transition: 'all 0.3s ease'
-            }}
-          >
-            Long-term Market Penetration
-          </button>
-        </div>
-      </div>
-
-      {/* Metric Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
-        <MetricCard title="Top Recommended Site" value={recommendedLocation} icon={<Target color="#6366f1" />} />
-        <MetricCard title="HoQ Raw Weight" value={strategy === 'short-term' ? '8,432' : '9,120'} icon={<Zap color="#10b981" />} />
-        <MetricCard title="Projected OpEx (Yr 1)" value={strategy === 'short-term' ? 'Rp 45M' : 'Rp 120M'} icon={<TrendingUp color="#f59e0b" />} />
-        <MetricCard title="Trade-off Risk Level" value={strategy === 'short-term' ? 'Moderate' : 'High'} icon={<AlertTriangle color="#f43f5e" />} />
-      </div>
-
-      {/* Charts Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-        <div className="glass-panel" style={{ padding: '24px' }}>
-          <h3 style={{ marginBottom: '20px', fontWeight: '600' }}>Technical Priority Matrix (Radar)</h3>
-          <div style={{ height: '300px' }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
-                <PolarGrid stroke="rgba(255,255,255,0.1)" />
-                <PolarAngleAxis dataKey="name" tick={{ fill: 'var(--text-muted)', fontSize: 12 }} />
-                <Radar name="Priority Score" dataKey="value" stroke={strategy === 'short-term' ? '#6366f1' : '#10b981'} fill={strategy === 'short-term' ? '#6366f1' : '#10b981'} fillOpacity={0.5} />
-                <Tooltip contentStyle={{ backgroundColor: 'var(--bg-dark)', borderColor: 'var(--border)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff' }} />
-              </RadarChart>
-            </ResponsiveContainer>
+    <div className="animate-fade-in" style={{ background: '#071126', color: '#ffffff', minHeight: '100vh', width: '100%', padding: '60px 40px 100px 40px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        {/* Header Actions */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          <div>
+            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', fontWeight: '500', marginBottom: '8px', color: 'white' }}>BI ROI Analytics Dashboard</h1>
+            <p style={{ color: '#94a3b8', fontSize: '1.05rem' }}>Multi-Objective Parameter Optimization & Trade-off Resolution</p>
+          </div>
+          
+          <div className="glass-panel" style={{ display: 'flex', padding: '6px', borderRadius: '12px', background: 'rgba(13, 27, 56, 0.85)' }}>
+            <button 
+              onClick={() => setStrategy('short-term')}
+              style={{
+                padding: '10px 20px',
+                border: 'none',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                fontWeight: '600',
+                fontSize: '0.9rem',
+                background: strategy === 'short-term' ? '#1e88e5' : 'transparent',
+                color: strategy === 'short-term' ? 'white' : '#94a3b8',
+                transition: 'all 0.3s ease',
+                boxShadow: strategy === 'short-term' ? '0 4px 12px rgba(30, 136, 229, 0.4)' : 'none'
+              }}
+            >
+              Short-term ROI Maximizer
+            </button>
+            <button 
+              onClick={() => setStrategy('long-term')}
+              style={{
+                padding: '10px 20px',
+                border: 'none',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                fontWeight: '600',
+                fontSize: '0.9rem',
+                background: strategy === 'long-term' ? '#10b981' : 'transparent',
+                color: strategy === 'long-term' ? 'white' : '#94a3b8',
+                transition: 'all 0.3s ease',
+                boxShadow: strategy === 'long-term' ? '0 4px 12px rgba(16, 185, 129, 0.4)' : 'none'
+              }}
+            >
+              Long-term Market Penetration
+            </button>
           </div>
         </div>
 
-        <div className="glass-panel" style={{ padding: '24px' }}>
-          <h3 style={{ marginBottom: '20px', fontWeight: '600' }}>Projected Revenue Growth (DCF Model)</h3>
-          <div style={{ height: '300px' }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={roiProjection} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="colorShort" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#6366f1" stopOpacity={0.5}/>
-                    <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
-                  </linearGradient>
-                  <linearGradient id="colorLong" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.5}/>
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                <XAxis dataKey="month" stroke="var(--text-muted)" tick={{ fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} />
-                <YAxis stroke="var(--text-muted)" tick={{ fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} />
-                <Tooltip contentStyle={{ backgroundColor: 'var(--bg-dark)', borderColor: 'var(--border)', borderRadius: '8px' }} itemStyle={{ color: '#fff' }} />
-                <Legend iconType="circle" wrapperStyle={{ paddingTop: '20px' }} />
-                <Area type="monotone" dataKey="shortTerm" stroke="#6366f1" strokeWidth={3} fillOpacity={1} fill="url(#colorShort)" name="Short-term Strategy" />
-                <Area type="monotone" dataKey="longTerm" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorLong)" name="Long-term Strategy" />
-              </AreaChart>
-            </ResponsiveContainer>
+        {/* Metric Cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+          <MetricCard title="Top Recommended Site" value={recommendedLocation} icon={<Target color="#1e88e5" size={24} />} />
+          <MetricCard title="HoQ Raw Weight" value={strategy === 'short-term' ? '8,432' : '9,120'} icon={<Zap color="#10b981" size={24} />} />
+          <MetricCard title="Projected OpEx (Yr 1)" value={strategy === 'short-term' ? 'Rp 45M' : 'Rp 120M'} icon={<TrendingUp color="#f59e0b" size={24} />} />
+          <MetricCard title="Trade-off Risk Level" value={strategy === 'short-term' ? 'Moderate' : 'High'} icon={<AlertTriangle color="#f43f5e" size={24} />} />
+        </div>
+
+        {/* Charts Row */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+          <div className="glass-panel" style={{ padding: '32px', background: 'rgba(13, 27, 56, 0.85)' }}>
+            <h3 style={{ marginBottom: '24px', fontWeight: '600', color: 'white', fontSize: '1.2rem' }}>Technical Priority Matrix (Radar)</h3>
+            <div style={{ height: '350px', width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart cx="50%" cy="50%" outerRadius="65%" data={radarData}>
+                  <PolarGrid stroke="rgba(255,255,255,0.1)" />
+                  <PolarAngleAxis dataKey="name" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+                  <Radar name="Priority Score" dataKey="value" stroke={strategy === 'short-term' ? '#1e88e5' : '#10b981'} fill={strategy === 'short-term' ? '#1e88e5' : '#10b981'} fillOpacity={0.4} />
+                  <Tooltip contentStyle={{ backgroundColor: '#0f1c3f', borderColor: '#1e88e5', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 'bold' }} />
+                </RadarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          <div className="glass-panel" style={{ padding: '32px', background: 'rgba(13, 27, 56, 0.85)' }}>
+            <h3 style={{ marginBottom: '24px', fontWeight: '600', color: 'white', fontSize: '1.2rem' }}>Projected Revenue Growth (DCF Model)</h3>
+            <div style={{ height: '350px', width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={roiProjection} margin={{ top: 20, right: 30, left: 10, bottom: 10 }}>
+                  <defs>
+                    <linearGradient id="colorShort" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#1e88e5" stopOpacity={0.5}/>
+                      <stop offset="95%" stopColor="#1e88e5" stopOpacity={0}/>
+                    </linearGradient>
+                    <linearGradient id="colorLong" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.5}/>
+                      <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                  <XAxis dataKey="month" stroke="#94a3b8" tick={{ fill: '#94a3b8' }} axisLine={false} tickLine={false} />
+                  <YAxis stroke="#94a3b8" tick={{ fill: '#94a3b8' }} axisLine={false} tickLine={false} />
+                  <Tooltip contentStyle={{ backgroundColor: '#0f1c3f', borderColor: '#10b981', borderRadius: '8px' }} itemStyle={{ color: '#fff', fontWeight: 'bold' }} />
+                  <Legend iconType="circle" wrapperStyle={{ paddingTop: '20px' }} />
+                  <Area type="monotone" dataKey="shortTerm" stroke="#1e88e5" strokeWidth={3} fillOpacity={1} fill="url(#colorShort)" name="Short-term Strategy" />
+                  <Area type="monotone" dataKey="longTerm" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorLong)" name="Long-term Strategy" />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
       </div>
