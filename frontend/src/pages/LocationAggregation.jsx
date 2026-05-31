@@ -263,26 +263,46 @@ const LocationAggregation = () => {
             </div>
             
             {/* Body */}
-            <div style={{ padding: '24px', flexGrow: 1, position: 'relative' }}>
+            <div style={{ padding: pipelineState === 'results' ? '0' : '24px', flexGrow: 1, position: 'relative', display: 'flex', flexDirection: 'column' }}>
               {pipelineState === 'idle' && (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#64748b', gap: '16px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#64748b', gap: '16px', flexGrow: 1 }}>
                   <Globe size={48} opacity={0.2} />
                   <p>Menunggu input geospasial untuk memulai ekstraksi...</p>
                 </div>
               )}
 
-              {(pipelineState === 'scanning' || pipelineState === 'results') && (
+              {pipelineState === 'scanning' && (
                 <div style={{ fontFamily: 'monospace', fontSize: '0.9rem', color: '#34d399', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {logs.map((log, idx) => (
                     <div key={idx} style={{ animation: 'fadeIn 0.3s ease-out' }}>
                       <span style={{ opacity: 0.5 }}>{new Date().toLocaleTimeString()}</span> &nbsp; {log}
                     </div>
                   ))}
-                  {pipelineState === 'scanning' && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '10px', color: '#1e88e5' }}>
-                      <Loader2 size={14} className="animate-spin" /> Processing request...
-                    </div>
-                  )}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '10px', color: '#1e88e5' }}>
+                    <Loader2 size={14} className="animate-spin" /> Processing request...
+                  </div>
+                </div>
+              )}
+
+              {pipelineState === 'results' && (
+                <div style={{
+                  flexGrow: 1,
+                  backgroundImage: `url("${import.meta.env.BASE_URL}gis_heatmap_mockup.png")`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  position: 'relative',
+                  minHeight: '350px',
+                  animation: 'fadeIn 0.8s ease-out'
+                }}>
+                  {/* UI Overlay */}
+                  <div style={{ position: 'absolute', top: '16px', left: '16px', background: 'rgba(7, 17, 38, 0.85)', padding: '8px 12px', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '8px', backdropFilter: 'blur(4px)' }}>
+                     <MapPin size={14} color="#10b981" />
+                     <span style={{ fontSize: '0.8rem', color: 'white', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Live OpEx Heatmap</span>
+                  </div>
+                  {/* Center Radar Ping */}
+                  <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80px', height: '80px', borderRadius: '50%', border: '2px solid rgba(16, 185, 129, 0.6)', background: 'rgba(16, 185, 129, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                     <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 16px 4px rgba(16, 185, 129, 0.8)' }} />
+                  </div>
                 </div>
               )}
             </div>
