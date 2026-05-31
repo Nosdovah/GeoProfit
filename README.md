@@ -87,12 +87,26 @@ Mesin hitung algoritma Go akan melayani komputasi aljabar linier dan optimasi di
 
 ---
 
+### 5. Deployment ke GitHub Pages (github.io)
+Aplikasi frontend telah dikonfigurasi agar dapat di-host di domain `github.io` (GitHub Pages) secara otomatis:
+*   **Vite Base URL & Router Basename:** Dikonfigurasi menggunakan `/GeoProfit/` agar sesuai dengan nama repositori.
+*   **CI/CD Workflow:** Workflow GitHub Actions telah ditambahkan di `.github/workflows/deploy.yml`. Setiap kali ada push ke branch `main`, workflow ini akan otomatis mem-build frontend React dan men-deploy hasilnya ke branch `gh-pages`.
+*   **Langkah Aktivasi di GitHub:**
+    1. Push repositori Anda ke GitHub.
+    2. Buka tab **Settings** di repositori GitHub Anda.
+    3. Pilih menu **Pages** di kolom navigasi sebelah kiri.
+    4. Di bawah **Build and deployment**, pastikan source adalah **Deploy from a branch**.
+    5. Pilih branch `gh-pages` dan folder `/ (root)`, lalu klik **Save**.
+    6. Aplikasi Anda akan dapat diakses secara publik di `https://<username>.github.io/GeoProfit/`.
+
+---
+
 ## 📈 Alur Pengguna (User Flow) Sistem
 
 1.  **Tahap Ingestion (Kano & VOC)**: Pengguna memasukkan kriteria kebutuhan bisnis lokasi dan mengisi kuesioner respon Kano fungsional/disfungsional.
 2.  **Tahap GIS & OpEx Pipeline**: Sistem menarik koordinat lokasi, memicu kalkulasi kepadatan populasi, jarak kompetitor, proyeksi biaya sewa, UMR setempat, serta pengujian telemetri latensi jaringan.
 3.  **Tahap HoQ Matrix**: Menjalankan perkalian matriks non-linier skala 9-3-1 antara kebutuhan bisnis dan parameter teknis lokasi untuk menghasilkan *Raw Weight*.
-4.  **Tahap The Roof Optimizer**: Mendeteksi trade-off parameter negatif (contoh: lokasi ramai tapi sewa mahal) dan mencarikan solusi optimum (*sweet spot*) menggunakan algoritma Pareto Efficiency.
+4.  **Tahap The Roof Optimizer**: Mendeteksi trade-off parameter negatif menggunakan Matriks Korelasi Atap (The Roof Matrix). Visualisasi Pareto Efficiency Frontier dengan Scatter Chart interaktif membantu menyaring lokasi optimal (*sweet spot* seperti Lokasi C) dari lokasi sub-optimal (*dominated*) yang tereliminasi akibat biaya tidak sebanding dengan performa.
 5.  **Tahap BI Dashboard**: Menyajikan hasil akhir rekomendasi lokasi, grafik prioritas, dan memberikan kendali fleksibel kepada pengguna untuk beralih antara opsi **"Short-term ROI Maximizer"** dan **"Long-term Market Penetration Growth"**.
 
 ---

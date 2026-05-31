@@ -231,7 +231,7 @@ const VOCIngestion = () => {
               borderRadius: '6px',
               overflow: 'hidden',
               height: '240px',
-              backgroundImage: 'url("/skyscraper_card_bg.png")',
+              backgroundImage: `url("${import.meta.env.BASE_URL}skyscraper_card_bg.png")`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               border: '1px solid rgba(255,255,255,0.1)'
@@ -576,7 +576,7 @@ const VOCIngestion = () => {
             border: '1px solid rgba(0,0,0,0.05)'
           }}>
             <img 
-              src="/modern_office_stats.png" 
+              src={`${import.meta.env.BASE_URL}modern_office_stats.png`} 
               alt="GeoProfit Premium Boardroom Mockup" 
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />
