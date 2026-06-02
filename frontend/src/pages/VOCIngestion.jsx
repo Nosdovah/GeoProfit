@@ -16,8 +16,10 @@ import {
   Activity,
   Target
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const VOCIngestion = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     jenisUsaha: '',
     lokasiTarget: '',
@@ -508,6 +510,41 @@ const VOCIngestion = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Action to Next Phase */}
+          <div className="glass-panel" style={{ 
+            marginTop: '32px', 
+            padding: '32px', 
+            background: 'linear-gradient(135deg, rgba(30, 136, 229, 0.1) 0%, rgba(13, 27, 56, 0.8) 100%)',
+            borderLeft: '4px solid #1e88e5',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}>
+            <div>
+              <h3 style={{ fontSize: '1.2rem', color: 'white', marginBottom: '8px' }}>Analisis Tahap 1 Selesai</h3>
+              <p style={{ color: '#94a3b8' }}>Variabel bisnis Anda telah dicatat. Selanjutnya, kita akan memindai data lapangan di lokasi target Anda.</p>
+            </div>
+            <button 
+              onClick={() => navigate('/location')}
+              style={{
+                background: 'white',
+                color: '#071126',
+                border: 'none',
+                padding: '12px 24px',
+                borderRadius: '6px',
+                fontWeight: '600',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+              className="btn-next-phase"
+            >
+              Lanjut ke GIS & OpEx <ChevronRight size={16} />
+            </button>
           </div>
         </section>
       )}
