@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, MapPin, DollarSign, Users } from 'lucide-react';
+import { Search, MapPin, DollarSign, Users, Wallet, Truck, Navigation } from 'lucide-react';
 import './LocationAnalyzer.css';
 
 const LocationAnalyzer = ({ onAnalyze, isAnalyzing }) => {
@@ -7,7 +7,10 @@ const LocationAnalyzer = ({ onAnalyze, isAnalyzing }) => {
     usaha: '',
     lokasi: '',
     budget: '',
-    target: ''
+    target: '',
+    modalAwal: '',
+    supplier: '',
+    aksesibilitas: ''
   });
 
   const handleChange = (e) => {
@@ -16,8 +19,8 @@ const LocationAnalyzer = ({ onAnalyze, isAnalyzing }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.usaha || !formData.lokasi || !formData.budget || !formData.target) {
-      alert("Harap isi semua data terlebih dahulu!");
+    if (!formData.usaha || !formData.lokasi || !formData.budget || !formData.target || !formData.modalAwal || !formData.supplier || !formData.aksesibilitas) {
+      alert("Harap isi semua 7 variabel analisis terlebih dahulu!");
       return;
     }
     onAnalyze(formData);
@@ -122,6 +125,48 @@ const LocationAnalyzer = ({ onAnalyze, isAnalyzing }) => {
                 value={formData.target}
                 onChange={handleChange}
               />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Modal Awal (Rp)</label>
+            <div className="input-wrapper">
+              <Wallet className="input-icon" size={20} />
+              <input 
+                type="number"
+                name="modalAwal"
+                placeholder="Contoh: 15000000"
+                value={formData.modalAwal}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Tipe Supplier Utama</label>
+            <div className="input-wrapper">
+              <Truck className="input-icon" size={20} />
+              <select name="supplier" value={formData.supplier} onChange={handleChange}>
+                <option value="">Pilih Ketersediaan Supplier</option>
+                <option value="Pasar induk">Pasar Induk</option>
+                <option value="Distributor">Distributor / Agen</option>
+                <option value="Pabrik">Pabrik / Produsen</option>
+                <option value="Lainnya">Lainnya / Mandiri</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Tingkat Aksesibilitas</label>
+            <div className="input-wrapper">
+              <Navigation className="input-icon" size={20} />
+              <select name="aksesibilitas" value={formData.aksesibilitas} onChange={handleChange}>
+                <option value="">Pilih Tingkat Aksesibilitas</option>
+                <option value="Pinggir jalan utama">Pinggir jalan utama</option>
+                <option value="Masuk gang">Masuk gang / Area Perumahan</option>
+                <option value="Parkir luas">Kawasan Komersial (Parkir Luas)</option>
+                <option value="Pusat perbelanjaan">Dalam Mall / Pusat Perbelanjaan</option>
+              </select>
             </div>
           </div>
 

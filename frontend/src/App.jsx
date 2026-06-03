@@ -16,12 +16,15 @@ function App() {
 
     // Simulate AI processing
     setTimeout(() => {
-      const { usaha, lokasi, budget, target } = formData;
+      const { usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas } = formData;
       
       const lokasiScore = Math.floor(Math.random() * 30) + 70;
       const profitScore = Math.floor(Math.random() * 25) + 70;
       const kompetitorScore = Math.floor(Math.random() * 40) + 40;
       const roiScore = Math.floor(Math.random() * 25) + 70;
+      const modalScore = Math.floor(Math.random() * 25) + 70;
+      const supplierScore = Math.floor(Math.random() * 30) + 70;
+      const aksesibilitasScore = Math.floor(Math.random() * 20) + 80;
 
       let pestle = {
         p: "Kebijakan pemerintah daerah terkait izin usaha UMKM di lokasi ini cukup mendukung.",
@@ -49,25 +52,36 @@ function App() {
 
       let recommendation = "";
 
+      // Logika Usaha
       if(usaha === "Coffee Shop" || usaha === "Cafe"){
         recommendation = "Area dekat kampus dan perkantoran memiliki potensi tinggi untuk bisnis cafe/coffee shop.";
-      } else if(usaha === "Restoran" || usaha === "Warung Makan" || usaha === "Street Food"){
-        recommendation = "Lokasi dengan foot traffic tinggi sangat cocok untuk bisnis kuliner.";
-      } else if(usaha === "Fashion" || usaha === "Hijab Store" || usaha === "Thrift Shop"){
-        recommendation = "Area mall dan pusat kota memiliki target pasar fashion yang lebih besar.";
+      } else if(usaha === "Restoran" || usaha === "Warung Makan" || usaha === "Street Food" || usaha === "Bakery"){
+        recommendation = "Lokasi mall atau pusat kota sangat disarankan untuk usaha kuliner ini.";
       } else {
-        recommendation = "Lokasi memiliki potensi stabil dengan kompetitor moderat.";
+        recommendation = "Lokasi memiliki potensi stabil dengan tingkat kompetitor moderat.";
       }
 
-      if(budget < 3000000){
-        recommendation += " Budget rendah, disarankan memilih area pinggiran dengan ROI cepat.";
-      } else if(budget > 10000000){
-        recommendation += " Budget tinggi memungkinkan lokasi premium dengan traffic besar.";
+      // Logika Modal Awal
+      const modalNum = Number(modalAwal);
+      if(modalNum < 5000000){
+        recommendation += " Saran: Pilih area pinggiran yang hemat biaya operasional.";
+      } else if(modalNum > 15000000){
+        recommendation += " Saran: Pilih lokasi premium untuk menunjang ROI optimal.";
+      } else {
+        recommendation += " Saran: Pilih area berkembang dengan peluang pertumbuhan stabil.";
+      }
+
+      // Logika Akses & Supplier
+      if (aksesibilitas === "Pinggir jalan utama" && supplier !== "Pabrik") {
+        recommendation += " Kondisi ideal: Area jalan utama sangat dekat dengan jalur distribusi Anda.";
+      } else {
+        recommendation += " Kondisi ideal: Area padat penduduk yang mendukung layanan logistik online.";
       }
 
       setResult({
-        usaha, lokasi, budget, target,
+        usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas,
         lokasiScore, profitScore, kompetitorScore, roiScore,
+        modalScore, supplierScore, aksesibilitasScore,
         pestle, recommendation
       });
       setIsAnalyzing(false);

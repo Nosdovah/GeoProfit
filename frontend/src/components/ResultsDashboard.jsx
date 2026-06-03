@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   Building, TrendingUp, Users, Cpu, Scale, Leaf, 
   MapPin, DollarSign, Target, Briefcase, ChevronRight,
-  GraduationCap, AlertCircle, Coffee
+  GraduationCap, AlertCircle, Coffee, Wallet, Truck, Navigation
 } from 'lucide-react';
 import { 
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
@@ -78,6 +78,27 @@ const ResultsDashboard = ({ result }) => {
               <span className="summary-value">{result.target}</span>
             </div>
           </div>
+          <div className="summary-item">
+            <Wallet className="summary-icon" />
+            <div>
+              <span className="summary-label">Modal Awal</span>
+              <span className="summary-value">Rp {Number(result.modalAwal).toLocaleString("id-ID")}</span>
+            </div>
+          </div>
+          <div className="summary-item">
+            <Truck className="summary-icon" />
+            <div>
+              <span className="summary-label">Supplier Utama</span>
+              <span className="summary-value">{result.supplier}</span>
+            </div>
+          </div>
+          <div className="summary-item">
+            <Navigation className="summary-icon" />
+            <div>
+              <span className="summary-label">Aksesibilitas</span>
+              <span className="summary-value">{result.aksesibilitas}</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -120,6 +141,36 @@ const ResultsDashboard = ({ result }) => {
           </div>
           <div className="progress-container">
             <div className="progress-bar" style={{ width: `${result.roiScore}%`, backgroundColor: '#4ade80' }}></div>
+          </div>
+        </div>
+
+        <div className="score-card glass">
+          <div className="score-header">
+            <h3>Kelayakan Modal</h3>
+            <span className="score-percentage" style={{color: '#38bdf8'}}>{result.modalScore}%</span>
+          </div>
+          <div className="progress-container">
+            <div className="progress-bar" style={{ width: `${result.modalScore}%`, backgroundColor: '#38bdf8' }}></div>
+          </div>
+        </div>
+
+        <div className="score-card glass">
+          <div className="score-header">
+            <h3>Skor Supplier</h3>
+            <span className="score-percentage">{result.supplierScore}%</span>
+          </div>
+          <div className="progress-container">
+            <div className="progress-bar" style={{ width: `${result.supplierScore}%`, backgroundColor: '#4ade80' }}></div>
+          </div>
+        </div>
+
+        <div className="score-card glass">
+          <div className="score-header">
+            <h3>Skor Aksesibilitas</h3>
+            <span className="score-percentage">{result.aksesibilitasScore}%</span>
+          </div>
+          <div className="progress-container">
+            <div className="progress-bar" style={{ width: `${result.aksesibilitasScore}%`, backgroundColor: '#4ade80' }}></div>
           </div>
         </div>
       </div>
