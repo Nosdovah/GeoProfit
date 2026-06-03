@@ -1,0 +1,252 @@
+.results-container {
+  margin-top: 40px;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-title {
+  font-size: 20px;
+  margin-bottom: 24px;
+  color: #fff;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 16px;
+}
+
+/* Summary Card */
+.summary-card {
+  margin-bottom: 30px;
+  padding: 30px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.summary-icon {
+  color: var(--primary);
+  background: rgba(74, 222, 128, 0.1);
+  padding: 10px;
+  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+}
+
+.summary-label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.summary-value {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Scores Grid */
+.scores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.score-card {
+  padding: 24px;
+  transition: transform 0.3s ease;
+}
+
+.score-card:hover {
+  transform: translateY(-5px);
+}
+
+.score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.score-header h3 {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.score-percentage {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.progress-container {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* PESTLE Analysis */
+.pestle-section {
+  margin-bottom: 30px;
+  padding: 30px;
+}
+
+.pestle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.pestle-card {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 16px;
+  transition: background 0.3s ease;
+}
+
+.pestle-card:hover {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.pestle-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.pestle-header h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pestle-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.p-blue { color: #3b82f6; }
+.p-green { color: #22c55e; }
+.p-yellow { color: #eab308; }
+.p-purple { color: #a855f7; }
+.p-red { color: #ef4444; }
+.p-teal { color: #14b8a6; }
+
+/* AI Recommendation */
+.recommendation-section {
+  padding: 30px;
+  margin-bottom: 40px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(74,222,128,0.05));
+  border: 1px solid rgba(74,222,128,0.2);
+}
+
+.recommendation-content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.rec-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.recommendation-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+/* Charts Grid */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.chart-card {
+  padding: 24px;
+}
+
+.chart-title {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.chart-wrapper {
+  height: 250px;
+  width: 100%;
+}
+
+.recharts-default-legend {
+  margin-top: 10px !important;
+}
+
+.recharts-legend-item-text {
+  color: var(--text-secondary) !important;
+}
+
+/* Insights Grid */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.insight-card {
+  padding: 24px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.insight-card:hover {
+  transform: translateY(-5px);
+}
+
+.insight-icon {
+  margin: 0 auto 16px auto;
+}
+
+.insight-title {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.insight-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,26 +1,96 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './components/Layout';
-import Dashboard from './pages/Dashboard';
-import VOCIngestion from './pages/VOCIngestion';
-import LocationAggregation from './pages/LocationAggregation';
-import HoQProcessor from './pages/HoQProcessor';
-import TradeoffOptimizer from './pages/TradeoffOptimizer';
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import LocationAnalyzer from './components/LocationAnalyzer';
+import ResultsDashboard from './components/ResultsDashboard';
+import Heatmap from './components/Heatmap';
+import Footer from './components/Footer';
 
 function App() {
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [result, setResult] = useState(null);
+
+  const handleAnalyze = (formData) => {
+    setIsAnalyzing(true);
+    setResult(null);
+
+    // Simulate AI processing
+    setTimeout(() => {
+      const { usaha, lokasi, budget, target } = formData;
+      
+      const lokasiScore = Math.floor(Math.random() * 30) + 70;
+      const profitScore = Math.floor(Math.random() * 25) + 70;
+      const kompetitorScore = Math.floor(Math.random() * 40) + 40;
+      const roiScore = Math.floor(Math.random() * 25) + 70;
+
+      let pestle = {
+        p: "Kebijakan pemerintah daerah terkait izin usaha UMKM di lokasi ini cukup mendukung.",
+        e: "Pertumbuhan ekonomi lokal stabil, daya beli masyarakat terhadap produk " + usaha + " tergolong baik.",
+        s: "Tren gaya hidup masyarakat sekitar sesuai dengan target pasar (" + target + ").",
+        t: "Adaptasi pembayaran digital (QRIS) dan layanan pesan-antar online sangat tinggi di area ini.",
+        l: "Regulasi zonasi wilayah komersial sudah sesuai, pastikan kelengkapan perizinan dasar (NIB).",
+        en: "Kondisi lingkungan memadai, akses sanitasi dan pengelolaan limbah komersial tersedia dengan baik."
+      };
+
+      if(usaha === "Cafe" || usaha === "Coffee Shop" || usaha === "Restoran"){
+        pestle.e = "Daya beli konsumen menengah ke atas cukup kuat untuk kuliner / F&B.";
+        pestle.s = "Budaya nongkrong dan hangout sangat tinggi di demografi area ini.";
+        pestle.en = "Perhatikan pengelolaan limbah sisa makanan dan ketersediaan air bersih.";
+      } else if(usaha === "Fashion" || usaha === "Hijab Store" || usaha === "Thrift Shop"){
+        pestle.s = "Kesadaran akan mode (fashion awareness) tinggi pada target demografi di lokasi ini.";
+        pestle.e = "Potensi lonjakan penjualan sangat dipengaruhi oleh tren dan musim liburan/hari raya.";
+      } else if(usaha === "Digital Agency" || usaha === "Co-Working Space" || usaha === "Content Creator Studio"){
+        pestle.t = "Infrastruktur internet dan konektivitas broadband fiber optik sangat mendukung di area ini.";
+        pestle.s = "Tingginya populasi profesional muda, freelancer, dan pekerja kreatif digital.";
+      } else if(usaha === "Laundry" || usaha === "Barbershop" || usaha === "Salon"){
+        pestle.e = "Permintaan layanan jasa kebutuhan sehari-hari sangat stabil terlepas dari kondisi makroekonomi.";
+        pestle.en = "Sistem drainase yang baik diperlukan untuk pengolahan limbah air (khususnya laundry/salon).";
+      }
+
+      let recommendation = "";
+
+      if(usaha === "Coffee Shop" || usaha === "Cafe"){
+        recommendation = "Area dekat kampus dan perkantoran memiliki potensi tinggi untuk bisnis cafe/coffee shop.";
+      } else if(usaha === "Restoran" || usaha === "Warung Makan" || usaha === "Street Food"){
+        recommendation = "Lokasi dengan foot traffic tinggi sangat cocok untuk bisnis kuliner.";
+      } else if(usaha === "Fashion" || usaha === "Hijab Store" || usaha === "Thrift Shop"){
+        recommendation = "Area mall dan pusat kota memiliki target pasar fashion yang lebih besar.";
+      } else {
+        recommendation = "Lokasi memiliki potensi stabil dengan kompetitor moderat.";
+      }
+
+      if(budget < 3000000){
+        recommendation += " Budget rendah, disarankan memilih area pinggiran dengan ROI cepat.";
+      } else if(budget > 10000000){
+        recommendation += " Budget tinggi memungkinkan lokasi premium dengan traffic besar.";
+      }
+
+      setResult({
+        usaha, lokasi, budget, target,
+        lokasiScore, profitScore, kompetitorScore, roiScore,
+        pestle, recommendation
+      });
+      setIsAnalyzing(false);
+
+      // Scroll to dashboard after short delay to allow render
+      setTimeout(() => {
+        document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+
+    }, 2500);
+  };
+
   return (
-    <Router basename={import.meta.env.BASE_URL}>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to="/voc" replace />} />
-          <Route path="voc" element={<VOCIngestion />} />
-          <Route path="location" element={<LocationAggregation />} />
-          <Route path="hoq" element={<HoQProcessor />} />
-          <Route path="optimizer" element={<TradeoffOptimizer />} />
-          <Route path="dashboard" element={<Dashboard />} />
-        </Route>
-      </Routes>
-    </Router>
+    <div className="app-container">
+      <Navbar />
+      <main>
+        <Hero />
+        <LocationAnalyzer onAnalyze={handleAnalyze} isAnalyzing={isAnalyzing} />
+        {result && <ResultsDashboard result={result} />}
+        <Heatmap />
+      </main>
+      <Footer />
+    </div>
   );
 }
 
