@@ -101,7 +101,7 @@ function App() {
         <Hero />
         <LocationAnalyzer onAnalyze={handleAnalyze} isAnalyzing={isAnalyzing} />
         {result && <ResultsDashboard result={result} />}
-        <Heatmap />
+        <Heatmap result={result} />
       </main>
       <Footer />
     </div>
