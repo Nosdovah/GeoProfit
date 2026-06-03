@@ -612,6 +612,46 @@ select option{
 
       </div>
 
+      <!-- PESTLE ANALYSIS -->
+      <div class="glass" style="margin-top:30px;">
+        <h3 style="margin-bottom:15px;">
+          Analisis PESTLE (Tahap 1)
+        </h3>
+        <div class="pestle-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px;">
+          
+          <div class="pestle-card" style="padding:15px; background:rgba(255,255,255,0.05); border-radius:15px;">
+            <h4 style="color:#3b82f6;"><i class="fa-solid fa-building-columns"></i> Political (Politik)</h4>
+            <p id="pestleP" style="font-size:14px; margin-top:10px; color:#d1d5db;">-</p>
+          </div>
+          
+          <div class="pestle-card" style="padding:15px; background:rgba(255,255,255,0.05); border-radius:15px;">
+            <h4 style="color:#22c55e;"><i class="fa-solid fa-money-bill-wave"></i> Economic (Ekonomi)</h4>
+            <p id="pestleE" style="font-size:14px; margin-top:10px; color:#d1d5db;">-</p>
+          </div>
+          
+          <div class="pestle-card" style="padding:15px; background:rgba(255,255,255,0.05); border-radius:15px;">
+            <h4 style="color:#eab308;"><i class="fa-solid fa-users"></i> Social (Sosial)</h4>
+            <p id="pestleS" style="font-size:14px; margin-top:10px; color:#d1d5db;">-</p>
+          </div>
+          
+          <div class="pestle-card" style="padding:15px; background:rgba(255,255,255,0.05); border-radius:15px;">
+            <h4 style="color:#a855f7;"><i class="fa-solid fa-microchip"></i> Technological (Teknologi)</h4>
+            <p id="pestleT" style="font-size:14px; margin-top:10px; color:#d1d5db;">-</p>
+          </div>
+          
+          <div class="pestle-card" style="padding:15px; background:rgba(255,255,255,0.05); border-radius:15px;">
+            <h4 style="color:#ef4444;"><i class="fa-solid fa-scale-balanced"></i> Legal (Hukum)</h4>
+            <p id="pestleL" style="font-size:14px; margin-top:10px; color:#d1d5db;">-</p>
+          </div>
+          
+          <div class="pestle-card" style="padding:15px; background:rgba(255,255,255,0.05); border-radius:15px;">
+            <h4 style="color:#14b8a6;"><i class="fa-solid fa-leaf"></i> Environmental (Lingkungan)</h4>
+            <p id="pestleEn" style="font-size:14px; margin-top:10px; color:#d1d5db;">-</p>
+          </div>
+
+        </div>
+      </div>
+
       <!-- REKOMENDASI -->
       <div class="glass" style="margin-top:30px;">
 
@@ -684,20 +724,52 @@ function analyzeLocation(){
     document.getElementById("barKompetitor").style.width = kompetitorScore + "%";
     document.getElementById("barROI").style.width = roiScore + "%";
 
+    // PESTLE AI
+    let pestle = {
+      p: "Kebijakan pemerintah daerah terkait izin usaha UMKM di lokasi ini cukup mendukung.",
+      e: "Pertumbuhan ekonomi lokal stabil, daya beli masyarakat terhadap produk " + usaha + " tergolong baik.",
+      s: "Tren gaya hidup masyarakat sekitar sesuai dengan target pasar (" + target + ").",
+      t: "Adaptasi pembayaran digital (QRIS) dan layanan pesan-antar online sangat tinggi di area ini.",
+      l: "Regulasi zonasi wilayah komersial sudah sesuai, pastikan kelengkapan perizinan dasar (NIB).",
+      en: "Kondisi lingkungan memadai, akses sanitasi dan pengelolaan limbah komersial tersedia dengan baik."
+    };
+
+    if(usaha === "Cafe" || usaha === "Coffee Shop" || usaha === "Restoran"){
+      pestle.e = "Daya beli konsumen menengah ke atas cukup kuat untuk kuliner / F&B.";
+      pestle.s = "Budaya nongkrong dan hangout sangat tinggi di demografi area ini.";
+      pestle.en = "Perhatikan pengelolaan limbah sisa makanan dan ketersediaan air bersih.";
+    } else if(usaha === "Fashion" || usaha === "Hijab Store" || usaha === "Thrift Shop"){
+      pestle.s = "Kesadaran akan mode (fashion awareness) tinggi pada target demografi di lokasi ini.";
+      pestle.e = "Potensi lonjakan penjualan sangat dipengaruhi oleh tren dan musim liburan/hari raya.";
+    } else if(usaha === "Digital Agency" || usaha === "Co-Working Space" || usaha === "Content Creator Studio"){
+      pestle.t = "Infrastruktur internet dan konektivitas broadband fiber optik sangat mendukung di area ini.";
+      pestle.s = "Tingginya populasi profesional muda, freelancer, dan pekerja kreatif digital.";
+    } else if(usaha === "Laundry" || usaha === "Barbershop" || usaha === "Salon"){
+      pestle.e = "Permintaan layanan jasa kebutuhan sehari-hari sangat stabil terlepas dari kondisi makroekonomi.";
+      pestle.en = "Sistem drainase yang baik diperlukan untuk pengolahan limbah air (khususnya laundry/salon).";
+    }
+
+    document.getElementById("pestleP").innerText = pestle.p;
+    document.getElementById("pestleE").innerText = pestle.e;
+    document.getElementById("pestleS").innerText = pestle.s;
+    document.getElementById("pestleT").innerText = pestle.t;
+    document.getElementById("pestleL").innerText = pestle.l;
+    document.getElementById("pestleEn").innerText = pestle.en;
+
     // REKOMENDASI AI
     let recommendation = "";
 
-    if(usaha === "Coffee Shop"){
+    if(usaha === "Coffee Shop" || usaha === "Cafe"){
       recommendation =
-      "Area dekat kampus dan perkantoran memiliki potensi tinggi untuk bisnis coffee shop.";
+      "Area dekat kampus dan perkantoran memiliki potensi tinggi untuk bisnis cafe/coffee shop.";
     }
 
-    else if(usaha === "Kuliner"){
+    else if(usaha === "Restoran" || usaha === "Warung Makan" || usaha === "Street Food"){
       recommendation =
       "Lokasi dengan foot traffic tinggi sangat cocok untuk bisnis kuliner.";
     }
 
-    else if(usaha === "Fashion"){
+    else if(usaha === "Fashion" || usaha === "Hijab Store" || usaha === "Thrift Shop"){
       recommendation =
       "Area mall dan pusat kota memiliki target pasar fashion yang lebih besar.";
     }
