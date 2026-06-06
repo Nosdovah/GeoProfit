@@ -16,7 +16,7 @@ function App() {
 
     // Simulate AI processing
     setTimeout(() => {
-      const { usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas } = formData;
+      const { usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas, strategi, kano } = formData;
       
       const lokasiScore = Math.floor(Math.random() * 30) + 70;
       const profitScore = Math.floor(Math.random() * 25) + 70;
@@ -79,7 +79,7 @@ function App() {
       }
 
       setResult({
-        usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas,
+        usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas, strategi, kano,
         lokasiScore, profitScore, kompetitorScore, roiScore,
         modalScore, supplierScore, aksesibilitasScore,
         pestle, recommendation

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, MapPin, DollarSign, Users, Wallet, Truck, Navigation } from 'lucide-react';
+import { Search, MapPin, DollarSign, Users, Wallet, Truck, Navigation, List, TrendingUp } from 'lucide-react';
 import './LocationAnalyzer.css';
 
 const LocationAnalyzer = ({ onAnalyze, isAnalyzing }) => {
@@ -10,7 +10,9 @@ const LocationAnalyzer = ({ onAnalyze, isAnalyzing }) => {
     target: '',
     modalAwal: '',
     supplier: '',
-    aksesibilitas: ''
+    aksesibilitas: '',
+    kano: '',
+    strategi: ''
   });
 
   const handleChange = (e) => {
@@ -19,8 +21,8 @@ const LocationAnalyzer = ({ onAnalyze, isAnalyzing }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.usaha || !formData.lokasi || !formData.budget || !formData.target || !formData.modalAwal || !formData.supplier || !formData.aksesibilitas) {
-      alert("Harap isi semua 7 variabel analisis terlebih dahulu!");
+    if (!formData.usaha || !formData.lokasi || !formData.budget || !formData.target || !formData.modalAwal || !formData.supplier || !formData.aksesibilitas || !formData.kano || !formData.strategi) {
+      alert("Harap isi semua variabel analisis terlebih dahulu!");
       return;
     }
     onAnalyze(formData);
@@ -166,6 +168,32 @@ const LocationAnalyzer = ({ onAnalyze, isAnalyzing }) => {
                 <option value="Masuk gang">Masuk gang / Area Perumahan</option>
                 <option value="Parkir luas">Kawasan Komersial (Parkir Luas)</option>
                 <option value="Pusat perbelanjaan">Dalam Mall / Pusat Perbelanjaan</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Respon Kano (Kebutuhan Bisnis)</label>
+            <div className="input-wrapper">
+              <List className="input-icon" size={20} />
+              <select name="kano" value={formData.kano} onChange={handleChange}>
+                <option value="">Pilih Fokus Respon Kano</option>
+                <option value="Fungsional">Fungsional (Harus Ada / Must-be)</option>
+                <option value="Kinerja">Kinerja (Linear / One-Dimensional)</option>
+                <option value="Menarik">Menarik (Daya Tarik / Attractive)</option>
+                <option value="Disfungsional">Disfungsional (Toleransi Kekurangan)</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Prioritas Strategi Ekspansi</label>
+            <div className="input-wrapper">
+              <TrendingUp className="input-icon" size={20} />
+              <select name="strategi" value={formData.strategi} onChange={handleChange}>
+                <option value="">Pilih Prioritas Dashboard (BI)</option>
+                <option value="Short-term ROI Maximizer">Short-term ROI Maximizer</option>
+                <option value="Long-term Market Penetration Growth">Long-term Market Penetration Growth</option>
               </select>
             </div>
           </div>

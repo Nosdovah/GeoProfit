@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   Building, TrendingUp, Users, Cpu, Scale, Leaf, 
   MapPin, DollarSign, Target, Briefcase, ChevronRight,
-  GraduationCap, AlertCircle, Coffee, Wallet, Truck, Navigation
+  GraduationCap, AlertCircle, Coffee, Wallet, Truck, Navigation, List
 } from 'lucide-react';
 import { 
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
@@ -97,6 +97,20 @@ const ResultsDashboard = ({ result }) => {
             <div>
               <span className="summary-label">Aksesibilitas</span>
               <span className="summary-value">{result.aksesibilitas}</span>
+            </div>
+          </div>
+          <div className="summary-item">
+            <List className="summary-icon" />
+            <div>
+              <span className="summary-label">Respon Kano</span>
+              <span className="summary-value">{result.kano}</span>
+            </div>
+          </div>
+          <div className="summary-item">
+            <TrendingUp className="summary-icon" />
+            <div>
+              <span className="summary-label">Strategi Prioritas</span>
+              <span className="summary-value">{result.strategi}</span>
             </div>
           </div>
         </div>
