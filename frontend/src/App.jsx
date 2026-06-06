@@ -12,21 +12,26 @@ function App() {
   const [result, setResult] = useState(null);
   const [activeTab, setActiveTab] = useState('home');
   const [vocData, setVocData] = useState(null);
+  const [pendingFormData, setPendingFormData] = useState(null);
+
+  const handleAnalyze = (formData) => {
+    setPendingFormData(formData);
+    setActiveTab('voc');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleVocSubmit = (data) => {
     setVocData(data);
-    // Optionally alert or guide the user back to analysis
-    alert(`VOC Tersimpan! Kategori Kano: ${data.kanoCategory}. Silakan kembali ke tab Home & Analisis.`);
-  };
-
-  const handleAnalyze = (formData) => {
     setIsAnalyzing(true);
+    setActiveTab('home');
     setResult(null);
 
     // Simulate AI processing
     setTimeout(() => {
-      const { usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas, strategi, kano } = formData;
-      const finalKano = vocData ? vocData.kanoCategory : kano;
+      const formData = pendingFormData || {};
+      const { usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas } = formData;
+      const finalKano = data.kanoCategory;
+      const strategi = "Long-term Market Penetration Growth"; // Default or calculated
       
       const lokasiScore = Math.floor(Math.random() * 30) + 70;
       const profitScore = Math.floor(Math.random() * 25) + 70;
