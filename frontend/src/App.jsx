@@ -5,10 +5,19 @@ import LocationAnalyzer from './components/LocationAnalyzer';
 import ResultsDashboard from './components/ResultsDashboard';
 import Heatmap from './components/Heatmap';
 import Footer from './components/Footer';
+import VocForm from './components/VocForm';
 
 function App() {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState(null);
+  const [activeTab, setActiveTab] = useState('home');
+  const [vocData, setVocData] = useState(null);
+
+  const handleVocSubmit = (data) => {
+    setVocData(data);
+    // Optionally alert or guide the user back to analysis
+    alert(`VOC Tersimpan! Kategori Kano: ${data.kanoCategory}. Silakan kembali ke tab Home & Analisis.`);
+  };
 
   const handleAnalyze = (formData) => {
     setIsAnalyzing(true);
@@ -17,6 +26,7 @@ function App() {
     // Simulate AI processing
     setTimeout(() => {
       const { usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas, strategi, kano } = formData;
+      const finalKano = vocData ? vocData.kanoCategory : kano;
       
       const lokasiScore = Math.floor(Math.random() * 30) + 70;
       const profitScore = Math.floor(Math.random() * 25) + 70;
@@ -79,7 +89,7 @@ function App() {
       }
 
       setResult({
-        usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas, strategi, kano,
+        usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas, strategi, kano: finalKano,
         lokasiScore, profitScore, kompetitorScore, roiScore,
         modalScore, supplierScore, aksesibilitasScore,
         pestle, recommendation
@@ -96,12 +106,19 @@ function App() {
 
   return (
     <div className="app-container">
-      <Navbar />
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
       <main>
-        <Hero />
-        <LocationAnalyzer onAnalyze={handleAnalyze} isAnalyzing={isAnalyzing} />
-        {result && <ResultsDashboard result={result} />}
-        <Heatmap result={result} />
+        {activeTab === 'home' && (
+          <>
+            <Hero />
+            <LocationAnalyzer onAnalyze={handleAnalyze} isAnalyzing={isAnalyzing} />
+            {result && <ResultsDashboard result={result} />}
+            <Heatmap result={result} />
+          </>
+        )}
+        {activeTab === 'voc' && (
+          <VocForm onVocSubmit={handleVocSubmit} />
+        )}
       </main>
       <Footer />
     </div>
