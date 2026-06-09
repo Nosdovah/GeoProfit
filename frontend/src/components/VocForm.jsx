@@ -117,7 +117,7 @@ const VocForm = ({ onVocSubmit }) => {
           onClick={handleSubmit}
           style={{ marginTop: '30px' }}
         >
-          Evaluasi Kano & HoQ Framework
+          Evaluasi
         </button>
 
         {submitted && (
