@@ -112,7 +112,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} hasLocationData={!!pendingFormData} />
       <main>
         {activeTab === 'home' && (
           <>
