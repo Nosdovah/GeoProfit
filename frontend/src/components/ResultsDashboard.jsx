@@ -2,7 +2,8 @@ import React from 'react';
 import { 
   Building, TrendingUp, Users, Cpu, Scale, Leaf, 
   MapPin, DollarSign, Target, Briefcase, ChevronRight,
-  GraduationCap, AlertCircle, Coffee, Wallet, Truck, Navigation, List
+  GraduationCap, AlertCircle, Coffee, Wallet, Truck, Navigation, List,
+  Map as MapIcon, Calendar, CheckCircle, Headset, Home
 } from 'lucide-react';
 import { 
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
@@ -247,6 +248,89 @@ const ResultsDashboard = ({ result }) => {
           <p>{result.recommendation}</p>
         </div>
       </div>
+
+      {/* OPTIONAL LAYANAN TAMBAHAN (ADDITIONAL SERVICES) */}
+      {(result.needsSupplier || result.needsAgent || result.realEstatePartner) && (
+        <div className="optional-services-container">
+          <h2 className="section-title" style={{ marginTop: '60px' }}>Layanan Tambahan Terpilih</h2>
+          
+          <div className="optional-services-grid">
+            {result.needsSupplier && (
+              <div className="glass optional-card">
+                <div className="optional-header p-blue">
+                  <MapIcon size={24} /> <h3>Rekomendasi Supplier Terdekat</h3>
+                </div>
+                <div className="supplier-map-placeholder">
+                  <div className="map-dummy">
+                    <MapPin size={32} color="#ef4444" className="map-pin" />
+                    <span>Peta Jarak Radius 5 KM</span>
+                  </div>
+                </div>
+                <ul className="supplier-list">
+                  <li>
+                    <strong>1. Supplier {result.supplier} A</strong>
+                    <span><Navigation size={14} /> 1.2 KM (Est. 5 min)</span>
+                  </li>
+                  <li>
+                    <strong>2. Agen {result.usaha} Grosir</strong>
+                    <span><Navigation size={14} /> 2.8 KM (Est. 12 min)</span>
+                  </li>
+                  <li>
+                    <strong>3. Pusat Distribusi Utama</strong>
+                    <span><Navigation size={14} /> 4.5 KM (Est. 20 min)</span>
+                  </li>
+                </ul>
+              </div>
+            )}
+
+            {result.needsAgent && (
+              <div className="glass optional-card">
+                <div className="optional-header p-green">
+                  <Headset size={24} /> <h3>Survei Lapangan oleh Agent</h3>
+                </div>
+                <div className="agent-content">
+                  <p>Agent kami siap membantu survei fisik lokasi <strong>{result.lokasi}</strong>.</p>
+                  <div className="agent-profile">
+                    <div className="agent-avatar"></div>
+                    <div>
+                      <strong>Budi Santoso</strong>
+                      <span className="agent-role">Field Surveyor Expert</span>
+                    </div>
+                  </div>
+                  <button className="btn btn-primary btn-sm schedule-btn">
+                    <Calendar size={16} /> Jadwalkan Sekarang
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {result.realEstatePartner && (
+              <div className="glass optional-card">
+                <div className="optional-header p-yellow">
+                  <Home size={24} /> <h3>Listing Partner Real Estate</h3>
+                </div>
+                <div className="listing-content">
+                  <p>Berikut adalah rekomendasi lahan/ruko eksklusif yang sesuai dengan budget <b>Rp {Number(result.budget).toLocaleString("id-ID")}</b>.</p>
+                  <div className="property-item">
+                    <Building size={18} />
+                    <div>
+                      <strong>Kios Strategis {result.lokasi}</strong>
+                      <span className="price">Sesuai Budget</span>
+                    </div>
+                  </div>
+                  <div className="property-item">
+                    <Building size={18} />
+                    <div>
+                      <strong>Ruko Komersial (Area Parkir Luas)</strong>
+                      <span className="price">Sesuai Budget</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* DASHBOARD CHARTS */}
       <h2 className="section-title" style={{ marginTop: '60px' }}>Dashboard Analytics</h2>

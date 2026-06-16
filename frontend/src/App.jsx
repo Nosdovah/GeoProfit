@@ -29,7 +29,7 @@ function App() {
     // Simulate AI processing
     setTimeout(() => {
       const formData = pendingFormData || {};
-      const { usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas } = formData;
+      const { usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas, needsSupplier, needsAgent, realEstatePartner } = formData;
       const finalKano = data.kanoCategory;
       const strategi = "Long-term Market Penetration Growth"; // Default or calculated
       
@@ -97,7 +97,8 @@ function App() {
         usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas, strategi, kano: finalKano,
         lokasiScore, profitScore, kompetitorScore, roiScore,
         modalScore, supplierScore, aksesibilitasScore,
-        pestle, recommendation
+        pestle, recommendation,
+        needsSupplier, needsAgent, realEstatePartner
       });
       setIsAnalyzing(false);
 

@@ -250,3 +250,163 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Optional Services Section */
+.optional-services-container {
+  margin-bottom: 40px;
+}
+
+.optional-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.optional-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.optional-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.optional-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Supplier Map */
+.supplier-map-placeholder {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px dashed var(--glass-border);
+  border-radius: 12px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-dummy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.map-pin {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+.supplier-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.supplier-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.supplier-list li strong {
+  color: #fff;
+  font-size: 14px;
+}
+
+.supplier-list li span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--primary);
+}
+
+/* Agent Section */
+.agent-content p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.agent-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.agent-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #22c55e);
+}
+
+.agent-role {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.schedule-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Property Listing */
+.listing-content p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.property-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.property-item strong {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.property-item .price {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 500;
+}
