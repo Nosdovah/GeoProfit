@@ -17,32 +17,10 @@ const COLORS = ['#4ade80', '#eab308', '#ef4444'];
 const ResultsDashboard = ({ result }) => {
   if (!result) return null;
 
-  const profitData = [
-    { name: 'Jan', value: 12 },
-    { name: 'Feb', value: 19 },
-    { name: 'Mar', value: 15 },
-    { name: 'Apr', value: 25 },
-    { name: 'Mei', value: 30 }
-  ];
-
-  const trafficData = [
-    { name: 'Sen', value: 120 },
-    { name: 'Sel', value: 190 },
-    { name: 'Rab', value: 150 },
-    { name: 'Kam', value: 250 },
-    { name: 'Jum', value: 300 }
-  ];
-
-  const roiData = [
-    { name: 'ROI', value: 78 },
-    { name: 'Cost', value: 22 }
-  ];
-
-  const pieData = [
-    { name: 'Rendah', value: 40 },
-    { name: 'Sedang', value: 35 },
-    { name: 'Tinggi', value: 25 }
-  ];
+  // Use dynamic data from result, or fallback to defaults
+  const profitData = result.profitData || [];
+  const trafficData = result.trafficData || [];
+  const pieData = result.pieData || [];
 
   const formatCurrency = (val) => {
     if (!val || isNaN(val)) return "Rp 0";

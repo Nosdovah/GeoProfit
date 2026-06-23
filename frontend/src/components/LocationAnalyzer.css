@@ -267,11 +267,14 @@ select option, select optgroup {
 }
 
 .option-card input[type="checkbox"] {
+  appearance: auto;
   width: 20px;
   height: 20px;
   margin-top: 5px;
   accent-color: var(--primary);
   cursor: pointer;
+  padding: 0;
+  border-radius: 4px;
 }
 
 .option-content h4 {

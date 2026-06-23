@@ -1,8 +1,9 @@
 import React from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 import './Hero.css';
+import './Hero.css';
 
-const Hero = () => {
+const Hero = ({ onDemoClick }) => {
   return (
     <section className="hero" id="home">
       <div className="hero-text">
@@ -17,8 +18,8 @@ const Hero = () => {
           <a href="#analisis" className="btn btn-primary">
             Mulai Analisis <ArrowRight size={18} />
           </a>
-          <button className="btn btn-secondary">
-            Lihat Demo <Play size={18} />
+          <button className="btn btn-secondary" onClick={onDemoClick}>
+            Lihat Demo Cepat <Play size={18} />
           </button>
         </div>
       </div>

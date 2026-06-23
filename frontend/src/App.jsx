@@ -14,6 +14,61 @@ function App() {
   const [vocData, setVocData] = useState(null);
   const [pendingFormData, setPendingFormData] = useState(null);
 
+  const runDemo = () => {
+    setIsAnalyzing(true);
+    setActiveTab('home');
+    setResult(null);
+
+    setTimeout(() => {
+      const demoResult = {
+        usaha: "Cafe & Coffee Shop",
+        lokasi: "Jalan Sudirman, Bogor",
+        budget: "25000000",
+        target: "Mahasiswa & Profesional Muda",
+        modalAwal: "150000000",
+        supplier: "Distributor Biji Kopi Lokal",
+        aksesibilitas: "Parkir Luas (Mobil & Motor)",
+        strategi: "Aggressive Social Media Marketing",
+        kano: "3 Kinerja, 2 Menarik",
+        lokasiScore: 88,
+        profitScore: 92,
+        kompetitorScore: 65,
+        roiScore: 85,
+        modalScore: 90,
+        aksesibilitasScore: 80,
+        recommendation: "Sangat direkomendasikan. Area ini memiliki traffic pejalan kaki dan kendaraan yang tinggi pada jam pulang kerja.",
+        pestle: {
+          p: "Regulasi zonasi wilayah komersial sudah sesuai.",
+          e: "Daya beli konsumen menengah ke atas cukup kuat untuk F&B.",
+          s: "Budaya hangout sangat tinggi di demografi area ini.",
+          t: "Adaptasi QRIS dan food delivery sangat tinggi.",
+          l: "Perizinan BPOM dan sertifikasi halal perlu diprioritaskan.",
+          en: "Sistem pengolahan limbah kafe tersedia dengan baik."
+        },
+        needsSupplier: true,
+        needsAgent: true,
+        realEstatePartner: true,
+        profitData: [
+          { name: 'Bulan 1', value: 15 }, { name: 'Bulan 2', value: 25 },
+          { name: 'Bulan 3', value: 45 }, { name: 'Bulan 4', value: 60 }, { name: 'Bulan 5', value: 85 }
+        ],
+        trafficData: [
+          { name: 'Sen', value: 150 }, { name: 'Sel', value: 160 },
+          { name: 'Rab', value: 180 }, { name: 'Kam', value: 200 }, { name: 'Jum', value: 350 }, { name: 'Sab', value: 500 }
+        ],
+        roiData: [{ name: 'ROI', value: 85 }, { name: 'Cost', value: 15 }],
+        pieData: [{ name: 'Rendah', value: 20 }, { name: 'Sedang', value: 50 }, { name: 'Tinggi', value: 30 }]
+      };
+      
+      setResult(demoResult);
+      setIsAnalyzing(false);
+
+      setTimeout(() => {
+        document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }, 1500);
+  };
+
   const handleAnalyze = (formData) => {
     setPendingFormData(formData);
     setActiveTab('voc');
@@ -93,12 +148,38 @@ function App() {
         recommendation += " Kondisi ideal: Area padat penduduk yang mendukung layanan logistik online.";
       }
 
+      // Generate Dynamic Chart Data based on scores
+      const generatedProfitData = [
+        { name: 'Bulan 1', value: Math.floor(profitScore * 0.1) },
+        { name: 'Bulan 2', value: Math.floor(profitScore * 0.3) },
+        { name: 'Bulan 3', value: Math.floor(profitScore * 0.5) },
+        { name: 'Bulan 4', value: Math.floor(profitScore * 0.8) },
+        { name: 'Bulan 5', value: Math.floor(profitScore * 1.2) }
+      ];
+
+      const generatedTrafficData = [
+        { name: 'Sen', value: Math.floor(lokasiScore * 1.5) },
+        { name: 'Sel', value: Math.floor(lokasiScore * 1.6) },
+        { name: 'Rab', value: Math.floor(lokasiScore * 1.4) },
+        { name: 'Kam', value: Math.floor(lokasiScore * 2.0) },
+        { name: 'Jum', value: Math.floor(lokasiScore * 3.5) }
+      ];
+
+      const generatedPieData = [
+        { name: 'Rendah', value: Math.max(10, 100 - kompetitorScore - 30) },
+        { name: 'Sedang', value: 30 },
+        { name: 'Tinggi', value: kompetitorScore }
+      ];
+
       setResult({
         usaha, lokasi, budget, target, modalAwal, supplier, aksesibilitas, strategi, kano: finalKano,
         lokasiScore, profitScore, kompetitorScore, roiScore,
         modalScore, supplierScore, aksesibilitasScore,
         pestle, recommendation,
-        needsSupplier, needsAgent, realEstatePartner
+        needsSupplier, needsAgent, realEstatePartner,
+        profitData: generatedProfitData,
+        trafficData: generatedTrafficData,
+        pieData: generatedPieData
       });
       setIsAnalyzing(false);
 
@@ -116,7 +197,7 @@ function App() {
       <main>
         {activeTab === 'home' && (
           <>
-            <Hero />
+            <Hero onDemoClick={runDemo} />
             <LocationAnalyzer onAnalyze={handleAnalyze} isAnalyzing={isAnalyzing} />
             {result && <ResultsDashboard result={result} />}
             <Heatmap result={result} />
