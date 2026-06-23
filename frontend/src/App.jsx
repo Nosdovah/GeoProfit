@@ -36,7 +36,7 @@ function App() {
         roiScore: 85,
         modalScore: 90,
         aksesibilitasScore: 80,
-        recommendation: "Sangat direkomendasikan. Area ini memiliki traffic pejalan kaki dan kendaraan yang tinggi pada jam pulang kerja.",
+        recommendation: "KEPUTUSAN: GO. Ide bisnis sangat layak! Realitas finansial Anda (Modal 150Jt) sangat kuat untuk format Cafe. Berdasarkan analisis VoC, prioritaskan pengembangan fitur 'Menarik' dan jangan membuang dana pada fitur 'Indifferent'. Segera jadwalkan Agent untuk survei properti.",
         pestle: {
           p: "Regulasi zonasi wilayah komersial sudah sesuai.",
           e: "Daya beli konsumen menengah ke atas cukup kuat untuk F&B.",
@@ -121,32 +121,18 @@ function App() {
       }
 
       let recommendation = "";
+      const overallScore = Math.floor((lokasiScore + profitScore + roiScore + modalScore + aksesibilitasScore) / 5);
 
-      // Logika Usaha
-      if(usaha === "Coffee Shop" || usaha === "Cafe"){
-        recommendation = "Area dekat kampus dan perkantoran memiliki potensi tinggi untuk bisnis cafe/coffee shop.";
-      } else if(usaha === "Restoran" || usaha === "Warung Makan" || usaha === "Street Food" || usaha === "Bakery"){
-        recommendation = "Lokasi mall atau pusat kota sangat disarankan untuk usaha kuliner ini.";
+      if (overallScore >= 80) {
+        recommendation = "KEPUTUSAN: GO. Ide bisnis sangat layak dieksekusi! AI merekomendasikan Anda untuk mengambil langkah actionable sekarang dengan menghubungi Agent Real Estate dan mengecek Supplier di dashboard.";
+      } else if (overallScore < 65) {
+        recommendation = "KEPUTUSAN: NO-GO (PIVOT). Risiko kegagalan tinggi! AI menyarankan Anda untuk PIVOT (Ubah ide, ubah lokasi, atau ubah target pasar) untuk menyelamatkan modal Anda.";
       } else {
-        recommendation = "Lokasi memiliki potensi stabil dengan tingkat kompetitor moderat.";
+        recommendation = "KEPUTUSAN: HOLD & EVALUATE. Ide memiliki potensi moderat. Pertimbangkan kembali tingkat kompetisi (Red Ocean) di area ini sebelum mengeksekusi dana.";
       }
 
-      // Logika Modal Awal
-      const modalNum = Number(modalAwal);
-      if(modalNum < 5000000){
-        recommendation += " Saran: Pilih area pinggiran yang hemat biaya operasional.";
-      } else if(modalNum > 15000000){
-        recommendation += " Saran: Pilih lokasi premium untuk menunjang ROI optimal.";
-      } else {
-        recommendation += " Saran: Pilih area berkembang dengan peluang pertumbuhan stabil.";
-      }
-
-      // Logika Akses & Supplier
-      if (aksesibilitas === "Pinggir jalan utama" && supplier !== "Pabrik") {
-        recommendation += " Kondisi ideal: Area jalan utama sangat dekat dengan jalur distribusi Anda.";
-      } else {
-        recommendation += " Kondisi ideal: Area padat penduduk yang mendukung layanan logistik online.";
-      }
+      // Append VoC Advice
+      recommendation += ` Berdasarkan input VoC Anda, abaikan pengembangan fitur 'Indifferent' dan optimalkan alokasi dana pada fitur berstatus 'Harus Ada' atau 'Menarik'.`;
 
       // Generate Dynamic Chart Data based on scores
       const generatedProfitData = [
