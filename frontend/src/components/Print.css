@@ -1,9 +1,7 @@
 /* --- PRINT / PDF EXPORT STYLES --- */
 @media print {
   /* Hide unnecessary UI elements for the report */
-  .navbar, .footer, .hero, #analisis, .heatmap-container, 
-  .btn-download-pdf, .ab-test-badge, .schedule-btn, .btn-claim-bonus,
-  .options-grid {
+  .navbar, .footer, .hero, #analisis, .heatmap-container, .btn-download-pdf, .ab-test-badge, .schedule-btn, .btn-claim-bonus, .options-grid {
     display: none !important;
   }
 
@@ -31,16 +29,11 @@
   }
 
   /* Ensure text colors are dark and legible */
-  h1, h2, h3, h4, h5, h6, 
-  .dashboard-title, .bento-header h3, .param-value, 
-  .metric-score, .score-value, strong, .risk-title, 
-  .legal-info strong, .metric-name, .chart-header h4 {
+  h1, h2, h3, h4, h5, h6, .dashboard-title, .bento-header h3, .param-value, .metric-score, .score-value, strong, .risk-title, .legal-info strong, .metric-name, .chart-header h4 {
     color: #0f172a !important;
   }
 
-  p, .dashboard-subtitle, .param-label, .risk-mitigation, 
-  .legal-desc, .legal-info span, .supplier-list li span, 
-  .agent-content p, .listing-content p {
+  p, .dashboard-subtitle, .param-label, .risk-mitigation, .legal-desc, .legal-info span, .supplier-list li span, .agent-content p, .listing-content p {
     color: #334155 !important;
   }
 
