@@ -1,0 +1,128 @@
+/* --- PRINT / PDF EXPORT STYLES --- */
+@media print {
+  /* Hide unnecessary UI elements for the report */
+  .navbar, .footer, .hero, #analisis, .heatmap-container, 
+  .btn-download-pdf, .ab-test-badge, .schedule-btn, .btn-claim-bonus,
+  .options-grid {
+    display: none !important;
+  }
+
+  /* Force light theme for the report */
+  body, #root, .app-container, main, .results-container {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  /* Reset container spacing */
+  .results-container {
+    margin-top: 0 !important;
+    padding: 0 !important;
+    animation: none !important;
+    gap: 20px !important;
+  }
+
+  /* Make glass containers look like solid report boxes */
+  .glass, .bento-card, .chart-card, .risk-card, .legal-card, .pestle-card, .optional-card, .bonus-section-wrapper, .marketing-profiling {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Ensure text colors are dark and legible */
+  h1, h2, h3, h4, h5, h6, 
+  .dashboard-title, .bento-header h3, .param-value, 
+  .metric-score, .score-value, strong, .risk-title, 
+  .legal-info strong, .metric-name, .chart-header h4 {
+    color: #0f172a !important;
+  }
+
+  p, .dashboard-subtitle, .param-label, .risk-mitigation, 
+  .legal-desc, .legal-info span, .supplier-list li span, 
+  .agent-content p, .listing-content p {
+    color: #334155 !important;
+  }
+
+  .score-label {
+    color: #64748b !important;
+  }
+
+  /* Dashboard Header */
+  .dashboard-header {
+    background: #f8fafc !important;
+    border: 2px solid #e2e8f0 !important;
+    border-left: 6px solid #3b82f6 !important;
+    padding: 20px !important;
+  }
+  
+  .dashboard-title::after {
+    content: " (CONFIDENTIAL REPORT)";
+    font-size: 14px;
+    color: #ef4444;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+
+  .score-circle {
+    background: #ffffff !important;
+    border-color: #3b82f6 !important;
+    box-shadow: none !important;
+  }
+
+  /* Force multi-column layout on print (ignore mobile responsiveness) */
+  .bento-grid-top, .risk-legal-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+  }
+
+  .charts-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 15px !important;
+  }
+  
+  .pestle-bento-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 15px !important;
+  }
+
+  /* Metrics Progress Bar Print Colors */
+  .progress-container {
+    background: #e2e8f0 !important;
+  }
+  
+  /* Retain specific colors by forcing webkit print adjust */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Utilities */
+  .p-primary, .p-blue, .p-green, .p-yellow, .p-purple, .p-red, .p-teal {
+    /* Slightly darken colors for print */
+    filter: brightness(0.8) !important;
+  }
+
+  /* Hide charts tooltip */
+  .recharts-tooltip-wrapper {
+    display: none !important;
+  }
+  
+  /* Recharts Text Colors */
+  .recharts-text, .recharts-legend-item-text {
+    fill: #334155 !important;
+  }
+
+  .recharts-cartesian-grid-horizontal line, .recharts-cartesian-grid-vertical line {
+    stroke: #e2e8f0 !important;
+  }
+
+  /* Page settings */
+  @page {
+    size: A4 portrait;
+    margin: 1.5cm;
+  }
+}

@@ -12,6 +12,7 @@ import {
   Legend
 } from 'recharts';
 import './ResultsDashboard.css';
+import './Print.css';
 
 const COLORS = ['#4ade80', '#eab308', '#ef4444'];
 
