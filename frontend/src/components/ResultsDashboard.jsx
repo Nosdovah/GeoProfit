@@ -44,8 +44,8 @@ const ResultsDashboard = ({ result }) => {
           <div className="header-content">
             <h2 className="dashboard-title">Executive Summary</h2>
             <p className="dashboard-subtitle">Hasil analisis komprehensif untuk kelayakan bisnis Anda.</p>
-            <button className="btn-download-pdf">
-              <Download size={16} /> Download Laporan (Investor Ready)
+            <button className="btn-download-pdf" onClick={() => window.print()}>
+              <Download size={16} /> Export Report to PDF - Rp 99.000
             </button>
           </div>
           <div className="overall-score-box">

@@ -1,0 +1,232 @@
+# 🚀 Pitch Deck & System Documentation: GeoProfit
+
+> [!IMPORTANT]
+> **GeoProfit** adalah platform SaaS (Software as a Service) berbasis AI yang dirancang untuk merevolusi proses pengambilan keputusan lokasi usaha bagi para pelaku UMKM (Usaha Mikro, Kecil, dan Menengah) di Indonesia. Platform ini mengeliminasi risiko kerugian akibat "salah pilih lokasi" dengan pendekatan berbasis data (*data-driven*).
+
+---
+
+## 1. Executive Summary
+Pemilihan lokasi adalah salah satu faktor paling mematikan bagi bisnis baru, terutama UMKM dengan modal terbatas. **GeoProfit** hadir sebagai penasihat cerdas (*intelligent advisor*) yang menganalisis kelayakan lokasi berdasarkan korelasi antara **Modal Awal**, **Jenis Usaha**, **Kepadatan Lalu Lintas (Traffic)**, dan **Tingkat Kompetitor**.
+
+Melalui antarmuka modern yang ramah pengguna, GeoProfit tidak hanya memberikan metrik berupa angka, tetapi juga keputusan bisnis yang jelas: **GO** (Lanjutkan), **HOLD** (Tahan & Evaluasi), atau **NO-GO** (Pivot).
+
+---
+
+## 2. Problem Statement & The Solution
+
+### 🚨 The Problem (Masalah)
+1. **Risiko Buta (Blind Risk):** UMKM sering kali menyewa ruko/kios hanya berdasarkan intuisi ("feeling") atau karena harga sewa yang murah, tanpa mempertimbangkan kesesuaian target pasar.
+2. **Keterbatasan Analisis:** Riset pasar profesional, survei geospasial, dan perhitungan ROI sangat mahal dan tidak terjangkau bagi UMKM.
+3. **Miskalkulasi Modal:** Sering terjadi ketidaksesuaian (*mismatch*) antara modal awal dengan jenis usaha yang dipaksakan di lokasi premium yang menguras *cash flow* operasional.
+
+### 💡 The Solution (Solusi GeoProfit)
+Sebuah *dashboard* otomatis yang memberikan:
+*   **Rekomendasi Parameter Cerdas:** Input modal awal, dan AI akan membatasi / menyarankan jenis usaha, budget sewa maksimal, dan tipe supplier yang masuk akal.
+*   **Skoring Kelayakan (Suitability Scoring):** Penilaian instan (0-100%) terhadap profitabilitas, aksesibilitas, ROI, dan keamanan modal.
+*   **Analisis Makro (PESTLE):** Evaluasi kesiapan eksternal mencakup Faktor Politik (Perizinan), Ekonomi (Daya Beli), Sosial (Gaya Hidup), Teknologi, Hukum, dan Lingkungan.
+
+---
+
+## 3. Core Features & System Architecture
+
+Sistem saat ini dibangun menggunakan teknologi **React.js** dengan pendekatan antarmuka *Glassmorphism* modern.
+
+### Alur Sistem (User Journey)
+1. **Fase Input Modal:** Sistem menangkap `ModalAwal` dan secara otomatis mengkalkulasi batasan operasional (*Constraints Logic*).
+2. **Fase Parameterisasi Bisnis:** Validasi jenis usaha, lokasi target (misal: Bogor), budget sewa, target pasar, supplier, dan tingkat aksesibilitas (misal: jalan utama vs masuk gang).
+3. **Fase Layanan Ekstra (O2O Hooks):** Penawaran integrasi bernilai tambah (Bantuan Pencarian Supplier, Penjadwalan Survei Lapangan, Integrasi Real Estate Partner).
+4. **Fase Voice of Customer (VoC / Model Kano):** Pengguna menginput fitur produk/layanan mereka, dan sistem mengkategorikan apakah fitur tersebut adalah *Must-be*, *Performance*, atau *Attractive*.
+5. **Fase Output (Dashboard Analytics):** 
+   - Hasil akhir skor prediksi.
+   - Grafik interaktif prediksi profit (Line Chart), Traffic Harian (Bar Chart), dan Kompetitor (Pie Chart) menggunakan *Recharts*.
+   - Keputusan akhir AI beserta saran taktis.
+
+---
+
+## 4. Monetization & Business Model
+
+GeoProfit dirancang untuk memiliki pelbagai aliran pendapatan (*Multiple Revenue Streams*) yang mencakup B2C, B2B, dan B2G.
+
+> [!TIP]
+> **Strategi Monetisasi Utama:**
+>
+> 1. **Freemium & Pay-per-Report (SaaS UMKM):**
+>    - Penggunaan dasar gratis (akuisisi *user base*).
+>    - Laporan komprehensif, ekspor PDF, dan analisis PESTLE dikenakan tarif *Pay-per-Report* (sekali bayar per lokasi).
+> 
+> 2. **O2O Services (Gig Economy & Field Surveyor):**
+>    - Monetisasi dari layanan **"Jadwalkan Agent di Lapangan"**. GeoProfit mengenakan *Service Fee* sebagai perantara antara pengguna dan surveyor lapangan bersertifikasi platform.
+>
+> 3. **Marketplace Commissions (Real Estate & Supplier):**
+>    - **Lead Generation untuk Properti:** Komisi rujukan (2-5%) jika pengguna menyewa properti komersial yang direkomendasikan di dalam dasbor hasil.
+>    - **Sponsorship Supplier:** Distributor dapat membayar untuk tampil dalam radius "Supplier Terdekat" di peta dasbor.
+>
+> 4. **Enterprise API & Data Licensing (Fintech/Banks):**
+>    - Menjual *endpoint* API penilaian kelayakan lokasi kepada Bank atau penyedia layanan *P2P Lending* sebagai data alternatif untuk proses penyetujuan kredit/pinjaman (Alternative Credit Scoring).
+
+---
+
+## 5. Market & Competitor Analysis
+
+### 📊 Market Potential & Target Audience
+Pasar UMKM di Indonesia sangat besar (lebih dari 64 juta unit usaha). Target utama GeoProfit pada tahap awal adalah:
+- **Calon Wirausahawan Baru** (Usia 20-35 tahun) yang ingin membuka gerai F&B (Cafe, Kopi Susu, Restoran), layanan jasa (Laundry, Barbershop), atau retail independen.
+- **Franchise / Pewaralaba** yang membutuhkan alat *assessment* lokasi massal bagi calon mitra *franchisee* mereka.
+
+### ⚔️ Competitor Analysis (Analisa Kompetitor)
+Saat ini, lanskap solusi pemilihan lokasi komersial dapat dikategorikan menjadi:
+1. **Traditional Consultancies (Konsultan Tradisional):** Perusahaan riset pasar profesional. **Kekurangan:** Sangat mahal, proses lambat, dan tidak dapat diakses oleh UMKM.
+2. **Enterprise GIS Software (Software GIS Enterprise):** Platform pemetaan tingkat lanjut (ArcGIS, QGIS). **Kekurangan:** Sangat teknis, *learning curve* curam, tidak memberikan saran keputusan bisnis instan.
+3. **Property Marketplaces (Marketplace Properti):** Platform penyewaan ruang usaha (seperti Rumah123, Lamudi). **Kekurangan:** Hanya menyediakan informasi harga dan foto ruko, tidak menganalisis kepadatan kompetitor, *traffic*, atau kecocokan dengan *budget* operasional pengguna.
+
+#### Pemetaan Kompetitor Spesifik
+Berikut adalah pemetaan pemain utama di ranah *Location Intelligence*, baik di tingkat regional maupun global:
+
+**A. Kompetitor Lokal & Regional (Indonesia/Asia Tenggara)**
+*   **Bhumi Varta Technology (BVT)**
+    *   **Deskripsi:** Pemain utama *location intelligence* di Indonesia.
+    *   **Cara Kerja:** Menyediakan platform berbasis modul (seperti produk bernama Lokasi) yang memetakan data demografi, pendapatan rata-rata per wilayah, titik kompetitor, hingga visualisasi data spasial. Banyak digunakan oleh perusahaan retail besar, franchise, dan FMCG di Indonesia untuk menentukan ekspansi ruko/toko.
+*   **Lokadata (PT Citra Data Nusantara)**
+    *   **Deskripsi:** Perusahaan analisis data yang mengombinasikan data sosio-ekonomi dengan pemetaan spasial.
+    *   **Cara Kerja:** Menyediakan wawasan (*insights*) mengenai profil demografi, pola konsumsi masyarakat di tingkat kecamatan/kelurahan, dan potensi ekonomi daerah untuk membantu pelaku bisnis mengambil keputusan lokasi.
+
+**B. Kompetitor Global (Benchmark Teknologi & Fitur)**
+*   **Placer.ai**
+    *   **Deskripsi:** Pemimpin pasar global untuk analisis *foot traffic* (mobilitas manusia).
+    *   **Cara Kerja:** Menggunakan data lokasi seluler yang dianonimkan untuk melacak berapa banyak orang yang benar-benar mengunjungi atau melewati suatu koordinat, dari mana mereka berasal, dan ke mana mereka pergi setelahnya. Sangat akurat untuk validasi lokasi retail komersial.
+*   **SiteZeus**
+    *   **Deskripsi:** Platform *site selection* berbasis kecerdasan buatan (AI) yang fokus pada industri *food and beverage* (F&B) dan retail.
+    *   **Cara Kerja:** Menggunakan mesin prediktif untuk menghitung estimasi omzet atau performa sebuah gerai jika dibuka di titik koordinat tertentu berdasarkan kesamaan karakteristik dengan gerai yang sudah sukses.
+*   **Esri ArcGIS Business Analyst**
+    *   **Deskripsi:** Standar industri global untuk analisis wilayah berbasis GIS (*Geographic Information System*).
+    *   **Cara Kerja:** Menyediakan kombinasi data demografi yang sangat masif, gaya hidup konsumen, pengeluaran wilayah, dan alat pemetaan untuk membuat laporan kelayakan lokasi secara instan.
+*   **CARTO**
+    *   **Deskripsi:** Platform *cloud-native location intelligence*.
+    *   **Cara Kerja:** Fokus pada visualisasi data spasial volume besar. Memungkinkan bisnis memasukkan data internal mereka sendiri dan menggabungkannya dengan data eksternal (cuaca, lalu lintas, demografi) untuk menemukan lokasi penempatan fisik terbaik.
+
+> [!TIP]
+> **Keunggulan Kompetitif GeoProfit (Competitive Advantage):**
+> Jika dibandingkan dengan pemain lokal/regional yang lebih berfokus pada level *enterprise* dan FMCG, maupun pemain global yang memiliki biaya sangat mahal, GeoProfit memenangkan persaingan dengan menyediakan *Sweet Spot* bagi UMKM: **Analisis sekelas konsultan, kemudahan penggunaan seperti marketplace, dan harga yang terjangkau (SaaS model)**. GeoProfit bukan sekadar mencari tempat kosong, melainkan merekomendasikan probabilitas sukses di lokasi tersebut.
+
+---
+
+## 6. Unique Selling Proposition (USP)
+
+GeoProfit memiliki beberapa **Unique Selling Point (USP)** yang sangat kuat sebagai nilai jual utama kepada investor dan pengguna:
+
+1. **Niche & Positioning Jelas (The Sweet Spot):** Pemain besar seperti Esri, CARTO, atau BVT fokus pada *Enterprise* dengan biaya ratusan juta, sedangkan UMKM hanya mengandalkan insting atau marketplace properti biasa. GeoProfit menjembatani *gap* ini dengan memberikan analitik sekelas *Enterprise* namun dengan kemudahan dan harga ala SaaS untuk UMKM.
+2. **Actionable Intelligence (Bukan Sekadar Peta):** Berbeda dengan aplikasi GIS yang menyerahkan interpretasi kerumitan peta pada pengguna, AI GeoProfit bertindak sebagai "Penasihat Cerdas" yang memberikan keputusan akhir definitif: **GO** (Lanjutkan), **HOLD** (Tahan/Evaluasi), atau **NO-GO** (Pivot).
+3. **Pendekatan "Reverse Constraints" Berbasis Modal:** UMKM sering bangkrut karena menyewa tempat mahal hingga kehabisan modal operasional. GeoProfit membalik cara kerja evaluasi lokasi: pengguna memasukkan **Modal Awal** terlebih dahulu, lalu AI akan memberikan "pagar" operasional (misalnya batas sewa maksimal dan jenis usaha yang direkomendasikan agar *cash flow* aman).
+4. **Integrasi Ekosistem O2O (Online-to-Offline):** GeoProfit bukan hanya *software*, melainkan ekosistem. Jika UMKM ragu dengan data, tersedia layanan **Jadwalkan Agent di Lapangan** untuk verifikasi manual (*Gig Economy*). Platform ini juga menghubungkan pengguna langsung dengan agen properti dan supplier terdekat.
+5. **Potensi Skalabilitas (Alternative Credit Scoring):** Laporan kelayakan lokasi GeoProfit dapat dilisensikan via API kepada Bank atau perusahaan P2P Lending sebagai tambahan verifikasi persetujuan kredit UMKM.
+
+> [!IMPORTANT]
+> **Elevator Pitch:**
+> *"GeoProfit adalah McKinsey berwujud software otomatis untuk UMKM. Kami mengubah tebak-tebakan buta menjadi keputusan berbasis data yang mencegah UMKM bangkrut di tahun pertama akibat salah pilih lokasi, dengan harga yang lebih murah dari secangkir kopi per laporannya."*
+
+---
+
+## 7. Development Roadmap
+
+> [!NOTE]
+> Prototype saat ini berhasil memvalidasi antarmuka pengguna (UI/UX) dan simulasi logika (Algoritma). Langkah berikutnya adalah integrasi data nyata.
+
+| Fase | Fokus Pengembangan | Deskripsi |
+| :--- | :--- | :--- |
+| **Fase 1 (Selesai)** | Prototype & Validasi Konsep | Simulasi alur kerja, UI/UX premium, *mock algorithm*, pembentukan arsitektur Frontend React. |
+| **Fase 2 (MVP)** | Integrasi Data Geospasial | Integrasi Google Maps API, Foursquare/Places API untuk agregasi *traffic* riil dan deteksi kepadatan kompetitor. |
+| **Fase 3 (Go-To-Market)** | Sistem Pembayaran & O2O | Implementasi Payment Gateway (Midtrans), perilisan fitur PDF Report, dan *onboarding* komunitas Surveyor Lapangan awal di satu kota pilot (mis. Bogor/Jakarta). |
+| **Fase 4 (Scaling)** | B2B Partnership | Pengikatan kontrak kemitraan (*MoU*) dengan perusahaan Real Estate, Franchise besar, dan P2P Lending. |
+
+---
+
+## 8. Financial Projections (Proyeksi Keuangan 3 Tahun)
+
+**Market Sizing (TAM, SAM, SOM) & Unit Economics:**
+- **TAM (Total Addressable Market):** 64 Juta UMKM di seluruh Indonesia.
+- **SAM (Serviceable Available Market):** 15 Juta UMKM (Fokus pada sektor Retail, F&B, dan Jasa di area urban/sub-urban yang memiliki literasi digital).
+- **SOM (Serviceable Obtainable Market):** 10.000 UMKM (Target akuisisi pasar skala *micro/lean startup* dalam 3 tahun pertama).
+
+**Asumsi Monetisasi:**
+- Konversi Pengguna Freemium ke *Pay-per-Report*: ~5%.
+- Harga *Pay-per-Report* (Premium Report): Rp 99.000 / laporan.
+- Biaya API Geospasial (Google Maps, Foursquare) per laporan: ~Rp 15.000.
+
+> [!TIP]
+> **Mengapa Rp 99.000 per Laporan? (Pricing Rationale):**
+> 1. **Impulse Buy & Low Barrier:** Harga di bawah Rp 100.000 terasa sangat terjangkau (setara harga dua cangkir kopi premium). UMKM tidak butuh persetujuan manajemen yang rumit untuk membelinya secara instan.
+> 2. **Risk-to-Reward Ratio yang Rasional:** Seorang wirausahawan akan menghabiskan puluhan hingga ratusan juta rupiah untuk menyewa ruko. Membayar Rp 99.000 sebagai "asuransi" pemvalidasi agar tidak salah pilih lokasi adalah investasi *no-brainer* (sangat logis).
+> 3. **High Gross Margin (85%):** Dengan ongkos API agregasi hanya Rp 15.000, setiap transaksi menghasilkan laba kotor Rp 84.000. Model margin tinggi ini sangat cocok untuk menopang *cash flow* operasional skala mikro.
+
+| Indikator (dalam Rupiah) | Tahun 1 (Validasi & MVP) | Tahun 2 (Stabilisasi & Profit) | Tahun 3 (Ekspansi Organik) |
+| :--- | :--- | :--- | :--- |
+| **Pengguna Aktif (UMKM)** | 300 | 1.000 | 3.000 |
+| **Volume Laporan Berbayar** | 600 Laporan | 2.000 Laporan | 6.000 Laporan |
+| **Pendapatan Laporan (B2C)** | Rp 59,4 Juta | Rp 198 Juta | Rp 594 Juta |
+| **Pendapatan API & B2B** | Rp 0 | Rp 50 Juta | Rp 150 Juta |
+| **Total Pendapatan Kotor (Revenue)** | **Rp 59,4 Juta** | **Rp 248 Juta** | **Rp 744 Juta** |
+| | | | |
+| **Beban Operasional (COGS & OpEx)** | | | |
+| - Biaya Infrastruktur (API, Server) | Rp 15 Juta | Rp 35 Juta | Rp 95 Juta |
+| - Pemasaran & Akuisisi (Organik) | Rp 5 Juta | Rp 15 Juta | Rp 30 Juta |
+| - Gaji & R&D (Talent) | Rp 60 Juta | Rp 90 Juta | Rp 180 Juta |
+| **Total Pengeluaran** | **Rp 80 Juta** | **Rp 140 Juta** | **Rp 305 Juta** |
+| | | | |
+| **Net Income / (Cash Flow)** | **(Rp 20,6 Juta)** | **Rp 108 Juta** | **Rp 439 Juta** |
+
+> [!TIP]
+> *Catatan: Proyeksi di atas dirancang secara khusus untuk mencapai "Sustainable & Cash Flow Positive" secepat mungkin, bukan mengejar pertumbuhan pengguna ("growth") yang membakar uang. Tahun 2 sudah menghasilkan margin keuntungan yang stabil.*
+
+### 💰 Kebutuhan Modal Awal (Micro/Pre-Seed Funding)
+Untuk mengeksekusi operasi skala mikro yang sangat mengedepankan profitabilitas (*lifestyle/bootstrapped business model*), GeoProfit mengestimasi kebutuhan pendanaan awal sebesar **Rp 50.000.000 (Lima Puluh Juta Rupiah)**. Modal ini sudah lebih dari cukup untuk menutupi defisit (*minus*) Tahun 1.
+
+**Alokasi Penggunaan Dana:**
+- **50% (Rp 25 Juta):** *Product Development & Infrastruktur* (*Hosting* skala kecil dan *top-up* lisensi API geospasial dasar).
+- **20% (Rp 10 Juta):** *Marketing Organik* (Pembuatan aset promosi komunitas dan promosi gratis lewat *word-of-mouth*).
+- **10% (Rp 5 Juta):** *Business Development* (Biaya perintisan kemitraan awal dengan koperasi atau paguyuban UMKM terdekat).
+- **20% (Rp 10 Juta):** *Legal & Operational Reserve* (Perizinan dasar seperti NIB dan pencadangan dana operasional ekstra).
+
+---
+
+## 9. Key Performance Indicators (KPI) Keberhasilan Bisnis
+
+Untuk meyakinkan investor bahwa bisnis ini dikelola secara terukur, kami menetapkan metrik keberhasilan utama yang dibagi menjadi tiga pilar:
+
+### 1. Metrik Akuisisi & Konversi (Growth & Conversion)
+*   **Freemium-to-Paid Conversion Rate (Target: ≥ 5%):** Persentase pengguna gratis yang melakukan transaksi laporan premium (Rp 99.000). Ini mengukur efektivitas nilai tambah laporan berbayar bagi pengguna.
+*   **Active Users (Target: 300 UMKM di Tahun 1, 1.000 di Tahun 2):** Jumlah pelaku usaha baru yang terdaftar dan secara aktif menggunakan alat analisis dasar kami setiap bulannya.
+
+### 2. Metrik Efisiensi Unit Ekonomi (Financial & Unit Economics)
+*   **Customer Acquisition Cost (CAC) (Target: ≤ Rp 10.000):** Menjaga biaya pemasaran tetap sangat rendah dengan memaksimalkan strategi organik (*content marketing*, komunitas lokal, dan *word-of-mouth*).
+*   **Customer Lifetime Value (LTV) (Target: ≥ Rp 198.000):** Rata-rata pendapatan dari satu pengguna unik. Angka ini mencerminkan asumsi bahwa satu pelaku usaha rata-rata membeli **minimal 2 laporan** untuk membandingkan alternatif lokasi.
+*   **LTV to CAC Ratio (Target: ≥ 10x):** Rasio kesehatan bisnis. Di industri SaaS, rasio > 3x sudah tergolong sehat. Dengan model operasi mikro, rasio target kami berada di angka 10x, yang menunjukkan efisiensi investasi modal yang sangat tinggi.
+   
+### 3. Metrik Kualitas & Kepuasan Produk (Product & Quality)
+*   **Data Accuracy & Validation Rate (Target: ≥ 90%):** Tingkat kesesuaian antara data sekunder (*API traffic* & kompetitor) dengan kondisi riil di lapangan, diverifikasi melalui audit acak bulanan.
+*   **Net Promoter Score (NPS) / Viral Coefficient (Target: > 40):** Tingkat kepuasan pengguna yang mengukur seberapa besar kemungkinan mereka merekomendasikan GeoProfit kepada rekan sesama pemilik UMKM lainnya secara organik.
+
+---
+
+## 10. Go-To-Market (GTM) & Organic Marketing Strategy
+
+Untuk mencapai target pertumbuhan pengguna secara stabil tanpa membakar uang, GeoProfit mengadopsi empat pilar strategi pemasaran organik (*zero-budget marketing*):
+
+### 1. Product-Led Growth (PLG) / "Try Before Buy"
+*   **Mekanisme:** Pengguna bisa menggunakan fitur dasar secara gratis (misalnya, melihat estimasi skor lokasi sekilas dan jumlah kompetitor kasar). 
+*   **Strategi Konversi:** Pengguna hanya perlu membayar Rp 99.000 ketika ingin membuka data terperinci (laporan lengkap berisi volume lalu lintas jalan, rekomendasi tipe supplier terdekat, analisis PESTLE, dan ekspor laporan PDF). Produk itu sendiri yang bertindak sebagai mesin penjualan utama.
+
+### 2. Educative Content Marketing (Kasus Nyata & Viral)
+*   **Mekanisme:** Membuat konten video pendek (TikTok, Instagram Reels, YouTube Shorts) yang membedah studi kasus nyata tentang *"Mengapa usaha kuliner X di lokasi Y bangkrut dalam 6 bulan"*. 
+*   **Strategi Konversi:** Mengedukasi calon wirausahawan tentang risiko fatal salah memilih lokasi (*blind risk*), lalu memposisikan GeoProfit sebagai solusi preventif termurah untuk menghindarinya.
+
+### 3. Community Partnership & Edukasi Kelompok (B2B2C)
+*   **Mekanisme:** Berkolaborasi dengan komunitas wirausaha lokal (seperti Tangan Di Atas/TDA, paguyuban UMKM tingkat daerah, Koperasi, atau grup inkubator bisnis kampus).
+*   **Strategi Konversi:** Mengadakan webinar atau *workshop* gratis bertema "Cara Cerdas Memilih Lokasi Usaha dengan Data". Di akhir sesi, peserta diberikan kode voucer gratis 1 kali pakai untuk mencoba GeoProfit, membangun basis pengguna loyal di awal secara massal.
+
+### 4. Viral Referral Loop
+*   **Mekanisme:** Menerapkan sistem rujukan sederhana di dalam aplikasi. Jika pengguna membagikan tautan rekomendasi GeoProfit dan teman mereka melakukan registrasi/membeli laporan, pemberi referensi akan mendapatkan 1 kuota analisis gratis.
+*   **Strategi Konversi:** Menurunkan biaya akuisisi pelanggan (CAC) hingga mendekati Rp 0 melalui pemasaran dari mulut ke mulut (*word-of-mouth*).
+
+---
+
+**GeoProfit** — *Smarter Locations, Bigger Profits.*
